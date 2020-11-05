@@ -10691,7 +10691,7 @@ section#contact form#contactForm :-ms-input-placeholder {
     padding-top: 15px;
     padding-bottom: 20px;
     border-radius: 10px;
-    margin-top: 7.5%;
+    /*margin-top: 7.5%;*/
     text-align: center;
 }
 
