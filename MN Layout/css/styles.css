@@ -1629,7 +1629,7 @@ pre code {
 
 .table {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
     color: #212529;
 }
 
@@ -1638,6 +1638,7 @@ pre code {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
+    padding-bottom: 0px;
 }
 
 .table thead th {
@@ -1646,7 +1647,7 @@ pre code {
 }
 
 .table tbody+tbody {
-    border-top: 2px solid #dee2e6;
+    border-top: 0px solid #dee2e6;
 }
 
 .table-sm th,
@@ -10694,6 +10695,19 @@ section#contact form#contactForm :-ms-input-placeholder {
     /*margin-top: 7.5%;*/
     text-align: center;
 }
+
+.formatTxt {
+    margin-top: -7%;
+    padding-bottom: 10px;
+    color: #000000;
+}
+
+
+/*
+.vertical {
+    display: table-cell;
+    vertical-align: middle;
+}*/
 
 .login-container {
     margin-top: -5%;
