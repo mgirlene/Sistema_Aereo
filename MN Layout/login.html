@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 
@@ -48,10 +49,10 @@
                     <h3>Login</h3>
                     <form>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" value="" />
+                            <input type="email" class="form-control" id="lEmail" name="lEmail" placeholder="Email" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Senha" value="" />
+                            <input type="password" class="form-control" id="lSenha" name="lSenha" placeholder="Senha" value="" required/>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />
@@ -65,13 +66,13 @@
                     <h3>Cadastre-se</h3>
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nome *" value="" />
+                            <input type="text" class="form-control" id="cNome" name="cNome" placeholder="Nome *" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                            <input type="email" class="form-control" id="cEmail" name="cEmail" placeholder="Email *" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Senha *" value="" />
+                            <input type="password" class="form-control" id="cSenha" name="cSenha" placeholder="Senha *" value="" required/>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Cadastrar" />
