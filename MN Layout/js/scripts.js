@@ -53,4 +53,8 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
 
+    $('#meuModal').on('shown.bs.modal', function() {
+        $('#meuInput').trigger('focus')
+    })
+
 })(jQuery); // End of use strict

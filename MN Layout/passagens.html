@@ -22,6 +22,27 @@
 
 </head>
 
+<!-- Modal -->
+<div class="modal fade" id="modalAssento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ASSENTOS DISPONÍVEIS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                ... ... ... ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-info">Salvar mudanças</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -52,61 +73,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <h3 class="vertical">IDA</h3>
-                            </td>
-                            <td>
-                                <figure class="media">
-                                    <figcaption class="media-body">
-                                        <h6 class="title text-truncate">Fortaleza-CE </h6>
-                                        <dl class="param param-inline small">
-                                            <dd><b>Data:</b> 18/11/2020 </dd>
-
-                                        </dl>
-                                        <dl class="param param-inline small">
-                                            <dd><b>Hora:</b> 20:00</dd>
-                                        </dl>
-                                    </figcaption>
-                                </figure>
-                            </td>
-                            <td>
-                                <i class="fas fa-arrow-right"></i>
-                            </td>
-
-                            </td>
-                            <td>
-                                <figure class="media">
-                                    <figcaption class="media-body">
-                                        <h6 class="title text-truncate">São Paulo-SP </h6>
-                                        <dl class="param param-inline small">
-                                            <dd><b>Data:</b> 18/11/2020 </dd>
-
-                                        </dl>
-                                        <dl class="param param-inline small">
-                                            <dd><b>Hora:</b> 23:00</dd>
-                                        </dl>
-                                    </figcaption>
-                                </figure>
-                            </td>
-                            <td class="text-right">
-                                <a href="pagamento.html" class="form-control btn btn-success w-100" role="button">Reservar</a>
-                            </td>
-                        </tr>
-                        </tr>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- card.// -->
-        </div>
-
-        <div class="container">
-            <div class="card">
-                <table class="table table-hover shopping-cart-wrap">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <h3 class="vertical">IDA</h3>
+                                <h3>IDA</h3>
                             </td>
                             <td>
                                 <figure class="media">
@@ -142,13 +109,73 @@
                                 </figure>
                             </td>
                             <td rowspan="2" class="text-right">
+                                <a href="pagamento.html" class="form-control btn btn-info w-100" role="button" data-toggle="modal" data-target="#modalAssento">Assentos </a>
+                            </td>
+                            <td class="text-right">
+                                <a href="pagamento.html" class="form-control btn btn-success w-100" role="button">Reservar</a>
+                            </td>
+                        </tr>
+                        </tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- card.// -->
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <table class="table table-hover shopping-cart-wrap">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3>IDA</h3>
+                            </td>
+                            <td>
+                                <figure class="media">
+                                    <figcaption class="media-body">
+                                        <h6 class="title text-truncate">Fortaleza-CE </h6>
+                                        <dl class="param param-inline small">
+                                            <dd><b>Data:</b> 18/11/2020 </dd>
+
+                                        </dl>
+                                        <dl class="param param-inline small">
+                                            <dd><b>Hora:</b> 20:00</dd>
+                                        </dl>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td>
+                                <i class="fas fa-arrow-right"></i>
+                            </td>
+
+                            </td>
+                            <td>
+                                <figure class="media">
+                                    <figcaption class="media-body">
+                                        <h6 class="title text-truncate">São Paulo-SP </h6>
+                                        <dl class="param param-inline small">
+                                            <dd><b>Data:</b> 18/11/2020 </dd>
+
+                                        </dl>
+                                        <dl class="param param-inline small">
+                                            <dd><b>Hora:</b> 23:00</dd>
+                                        </dl>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td rowspan="2" class="text-right">
+                                <a href="pagamento.html" class="form-control btn btn-info w-100" role="button" data-toggle="modal" data-target="#modalAssento">Assentos </a>
+                            </td>
+                            <td rowspan="2" class="text-right">
                                 <a href="pagamento.html" class="form-control btn btn-success w-100" role="button">Reservar</a>
                             </td>
                         </tr>
                         </tr>
                         <tr>
                             <td>
-                                <h3 class="vertical">VOLTA</h3>
+                                <h3>VOLTA</h3>
                             </td>
                             <td>
                                 <figure class="media">
