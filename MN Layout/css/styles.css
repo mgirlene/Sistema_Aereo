@@ -10702,6 +10702,14 @@ section#contact form#contactForm :-ms-input-placeholder {
     color: #000000;
 }
 
+.disponivel {
+    background-color: green;
+}
+
+.ocupado {
+    background-color: red;
+}
+
 .login-container {
     margin-top: -5%;
     margin-bottom: -12%;
