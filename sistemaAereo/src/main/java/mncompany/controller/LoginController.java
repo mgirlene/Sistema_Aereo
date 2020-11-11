@@ -28,6 +28,6 @@ public class LoginController {
 	@PostMapping("/cadastrar")
 	public String cadastrar(Usuario usuario) {
 		service.salvar(usuario);
-		return "redirect:/login";
+		return "redirect:/";
 	}
 }

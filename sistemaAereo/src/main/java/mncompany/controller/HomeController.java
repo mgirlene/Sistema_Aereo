@@ -13,10 +13,16 @@ public class HomeController {
 	public String home(Voo voo) {
 		return "home";
 	}
+
+	@GetMapping("/minhasReservas")
+	public String minhasReservas() {
+		return "reservas";
+	}
 	
 	@PostMapping("/pesquisarPassagem")
 	public String pesquisarPassagem(Voo voo) {
 		//IMPLEMENTAR BUSCA
 		return "passagens";
 	}
+	
 }
