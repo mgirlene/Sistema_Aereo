@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 public class AbstractDao<T, PK extends Serializable> {
@@ -13,6 +14,7 @@ public class AbstractDao<T, PK extends Serializable> {
 	private final Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
 			.getActualTypeArguments()[0];
 
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	protected EntityManager getEntityManager() {

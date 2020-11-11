@@ -36,12 +36,12 @@
             <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
-                    <form>
+                    <form th:action="@{/fazerLogin}" th:object="${usuario}" method="POST">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="lEmail" name="lEmail" placeholder="Email" value="" required/>
+                            <input type="email" class="form-control" id="lEmail" placeholder="Email" th:field="*{email}" required/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="lSenha" name="lSenha" placeholder="Senha" value="" required/>
+                            <input type="password" class="form-control" id="lSenha" placeholder="Senha" th:field="*{senha}" required/>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />
@@ -53,15 +53,15 @@
                 </div>
                 <div class="col-md-6 login-form-2">
                     <h3>Cadastre-se</h3>
-                    <form>
+                    <form th:action="@{/cadastrar}" th:object="${usuario}" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="cNome" name="cNome" placeholder="Nome *" value="" required/>
+                            <input type="text" class="form-control" id="cNome" placeholder="Nome *" th:field="*{nome}" required/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="cEmail" name="cEmail" placeholder="Email *" value="" required/>
+                            <input type="email" class="form-control" id="cEmail" placeholder="Email *" th:field="*{email}" required/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="cSenha" name="cSenha" placeholder="Senha *" value="" required/>
+                            <input type="password" class="form-control" id="cSenha" placeholder="Senha *" th:field="*{senha}" required/>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Cadastrar" />

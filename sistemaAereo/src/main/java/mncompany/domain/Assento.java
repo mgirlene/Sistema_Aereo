@@ -9,8 +9,12 @@ public class Assento extends AbstractEntity<Long> {
 
 	@Column(name = "nome", nullable = false, length = 45)
 	private String nome;
+	
 	@Column(name = "disponibilidade", nullable = false)
 	private boolean disponibilidade;
+	
+	@Column(name = "classe", nullable = false)
+	private String classe;
 
 	@ManyToOne
 	@JoinColumn(name = "id_voo")
@@ -38,5 +42,13 @@ public class Assento extends AbstractEntity<Long> {
 
 	public void setId_voo(Voo id_voo) {
 		this.id_voo = id_voo;
+	}
+
+	public String getClasse() {
+		return classe;
+	}
+
+	public void setClasse(String classe) {
+		this.classe = classe;
 	}
 }
