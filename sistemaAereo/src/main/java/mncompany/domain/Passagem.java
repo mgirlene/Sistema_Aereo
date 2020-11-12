@@ -2,17 +2,11 @@ package mncompany.domain;
 
 import javax.persistence.*;
 
-import org.springframework.format.annotation.NumberFormat;
-import org.springframework.format.annotation.NumberFormat.Style;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Passagem")
 public class Passagem extends AbstractEntity<Long> {
-	
-	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
-	@Column(name = "preco", nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
-	private float preco;
 	
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
@@ -25,14 +19,6 @@ public class Passagem extends AbstractEntity<Long> {
 	@OneToOne
 	@JoinColumn(name="id_pagamento")
 	private SituacaoPagamento id_pagamento;
-
-	public float getPreco() {
-		return preco;
-	}
-
-	public void setPreco(float preco) {
-		this.preco = preco;
-	}
 
 	public Usuario getId_usuario() {
 		return id_usuario;

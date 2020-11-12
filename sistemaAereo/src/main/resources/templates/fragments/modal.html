@@ -39,10 +39,13 @@
 	                                        <h5>F</h5>
 	                                    </th>
 	                                </tr>
-	                                <tr>
+	                                <tr th:each="a : ${assento}">
+	                                	 <th>
+	                                        <h5>1</h5>
+	                                    </th>
 	                                    <td class="disponivel">
 	                                        <input type="radio" id="A1" name="assento" value="A1">
-	                                        <label for="A1">A1</label>
+	                                        <label for="A1" th:text="${a.nome}">A1</label>
 	                                    </td>
 	                                    <td class="disponivel">
 	                                        <input type="radio" id="B1" name="assento" value="B1">
@@ -52,9 +55,7 @@
 	                                        <input type="radio" id="C1" name="assento" value="C1" disabled>
 	                                        <label for="C1">C1</label>
 	                                    </td>
-	                                    <th>
-	                                        <h5>1</h5>
-	                                    </th>
+	                                   
 	                                    <td class="disponivel">
 	                                        <input type="radio" id="D1" name="assento" value="D1">
 	                                        <label for="D1">D1</label>
@@ -105,7 +106,7 @@
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-	                <button type="button" class="btn btn-info">Salvar mudanças</button>
+	                <a  th:href="@{/minhasReservas}" type="button" class="btn btn-success">Reservar</a>
 	            </div>
 	        </div>
 	    </div>

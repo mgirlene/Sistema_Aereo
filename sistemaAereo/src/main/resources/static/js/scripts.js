@@ -56,5 +56,14 @@
     $('#meuModal').on('shown.bs.modal', function() {
         $('#meuInput').trigger('focus')
     })
-
+    
+   /* $("#dataIda").datepicker({
+    	minDate:0
+    });
+    
+    var data = document.getElementById("dataIda").value;
+    $("#dataVolta").datepicker({
+    	datesDisabled: data
+    });
+*/
 })(jQuery); // End of use strict
