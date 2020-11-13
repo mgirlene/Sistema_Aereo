@@ -15,5 +15,7 @@ public interface UsuarioService {
 	Usuario buscarPorId(Long id);
 
 	List<Usuario> buscarTodos();
+	
+	Usuario buscarPorEmailESenha(String email, String senha);
 
 }

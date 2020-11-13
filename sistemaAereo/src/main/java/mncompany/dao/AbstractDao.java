@@ -47,6 +47,13 @@ public class AbstractDao<T, PK extends Serializable> {
 			query.setParameter(i + 1, params[i]);
 		}
 		return query.getResultList();
-
 	}	
+	
+	protected T createQuerySimple(String jpql, Object... params) {
+		TypedQuery<T> query = entityManager.createQuery(jpql, entityClass);
+		for (int i = 0; i < params.length; i++) {
+			query.setParameter(i + 1, params[i]);
+		}
+		return query.getSingleResult();
+	}
 }

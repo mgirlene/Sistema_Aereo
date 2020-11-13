@@ -43,4 +43,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return dao.findAll();
 	}
 
+	@Override @Transactional(readOnly = true)
+	public Usuario buscarPorEmailESenha(String email, String senha) {
+		return dao.findByLoginAndPassword(email, senha);
+	}
+
 }

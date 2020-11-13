@@ -3,6 +3,7 @@ package mncompany.service;
 import java.util.List;
 
 import mncompany.domain.Assento;
+import mncompany.domain.Voo;
 
 public interface AssentoService {
 
@@ -15,4 +16,6 @@ public interface AssentoService {
 	Assento buscarPorId(Long id);
 
 	List<Assento> buscarTodos();
+	
+	List<Assento> buscarPorAssentos(Voo voo);
 }

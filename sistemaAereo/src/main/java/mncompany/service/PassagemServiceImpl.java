@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mncompany.dao.PassagemDao;
 import mncompany.domain.Passagem;
+import mncompany.domain.Usuario;
 
 @Service
 @Transactional(readOnly = false)
@@ -39,6 +40,11 @@ public class PassagemServiceImpl implements PassagemService {
 	@Override @Transactional(readOnly = true)
 	public List<Passagem> buscarTodos() {
 		return dao.findAll();
+	}
+
+	@Override @Transactional(readOnly = true)
+	public List<Passagem> buscarPorPassagens(Usuario usuario) {
+		return dao.findByPassagens(usuario);
 	}
 
 }

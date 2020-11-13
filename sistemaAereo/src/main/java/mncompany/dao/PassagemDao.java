@@ -3,6 +3,7 @@ package mncompany.dao;
 import java.util.List;
 
 import mncompany.domain.Passagem;
+import mncompany.domain.Usuario;
 
 public interface PassagemDao {
 	
@@ -15,4 +16,6 @@ public interface PassagemDao {
 	Passagem findById(Long id);
 
 	List<Passagem> findAll();
+	
+	List<Passagem> findByPassagens(Usuario usuario);
 }

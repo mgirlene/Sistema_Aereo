@@ -3,6 +3,7 @@ package mncompany.dao;
 import java.util.List;
 
 import mncompany.domain.Assento;
+import mncompany.domain.Voo;
 
 public interface AssentoDao {
 
@@ -15,5 +16,7 @@ public interface AssentoDao {
 	Assento findById(Long id);
 
 	List<Assento> findAll();
+	
+	List<Assento> findByAssentos(Voo voo);
 
 }

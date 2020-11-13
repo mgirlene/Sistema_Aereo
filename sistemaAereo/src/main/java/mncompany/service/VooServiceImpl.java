@@ -1,5 +1,6 @@
 package mncompany.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class VooServiceImpl implements VooService {
 	@Override @Transactional(readOnly = true)
 	public List<Voo> buscarTodos() {
 		return dao.findAll();
+	}
+
+	@Override @Transactional(readOnly = true)
+	public List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataIda) {
+		return dao.findByVoos(origem, destino, dataIda);
 	}
 	
 
