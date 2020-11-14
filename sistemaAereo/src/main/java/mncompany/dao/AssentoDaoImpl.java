@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import mncompany.domain.Assento;
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Assento;
+import mncompany.domain.entity.Voo;
 
 @Repository
 public class AssentoDaoImpl extends AbstractDao<Assento, Long> implements AssentoDao {

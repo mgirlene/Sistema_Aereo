@@ -1,8 +1,9 @@
 package mncompany.service;
 
 import java.util.List;
+import java.util.UUID;
 
-import mncompany.domain.SituacaoPagamento;
+import mncompany.domain.entity.SituacaoPagamento;
 
 public interface SituacaoPagamentoService {
 	
@@ -10,9 +11,9 @@ public interface SituacaoPagamentoService {
 
 	void editar(SituacaoPagamento situacaoPagamento);
 
-	void excluir(Long id);
+	void excluir(UUID id);
 
-	SituacaoPagamento buscarPorId(Long id);
+	SituacaoPagamento buscarPorId(UUID id);
 
 	List<SituacaoPagamento> buscarTodos();
 

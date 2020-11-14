@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import mncompany.domain.Passagem;
-import mncompany.domain.Usuario;
+import mncompany.domain.entity.Passagem;
+import mncompany.domain.entity.Usuario;
 
 @Repository
 public class PassagemDaoImpl extends AbstractDao<Passagem, Long> implements PassagemDao {

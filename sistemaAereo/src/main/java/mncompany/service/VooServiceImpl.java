@@ -2,49 +2,57 @@ package mncompany.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mncompany.dao.VooDao;
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Voo;
+import mncompany.repository.VooRepository;
 
 @Service
 @Transactional(readOnly = false)
 public class VooServiceImpl implements VooService {
 	
 	@Autowired
-	private VooDao dao;
+	private VooRepository repository;
+	
+	public VooServiceImpl(VooRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void salvar(Voo voo) {
-		dao.save(voo);
+		this.repository.save(voo);
 	}
 
 	@Override
 	public void editar(Voo voo) {
-		dao.update(voo);
+		this.salvar(voo);
 	}
 
 	@Override
-	public void excluir(Long id) {
-		dao.delete(id);
+	public void excluir(UUID id) {
+		Voo voo = this.buscarPorId(id);
+		this.repository.delete(voo);
 	}
 
 	@Override @Transactional(readOnly = true)
-	public Voo buscarPorId(Long id) {
-		return dao.findById(id);
+	public Voo buscarPorId(UUID id) {
+		return this.repository.findById(id).orElseThrow(
+		        () -> new RuntimeException("O ID do assento informado [%s] nÃ£o existe no banco."));
 	}
 
 	@Override @Transactional(readOnly = true)
 	public List<Voo> buscarTodos() {
-		return dao.findAll();
+		return this.repository.findAll();
 	}
 
 	@Override @Transactional(readOnly = true)
 	public List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataIda) {
-		return dao.findByVoos(origem, destino, dataIda);
+		return this.repository.findByOrigemAndDestinoAndDataIda(origem, destino, dataIda);
 	}
 	
 

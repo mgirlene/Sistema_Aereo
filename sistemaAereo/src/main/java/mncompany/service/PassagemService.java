@@ -1,9 +1,10 @@
 package mncompany.service;
 
 import java.util.List;
+import java.util.UUID;
 
-import mncompany.domain.Passagem;
-import mncompany.domain.Usuario;
+import mncompany.domain.entity.Passagem;
+import mncompany.domain.entity.Usuario;
 
 public interface PassagemService {
 	
@@ -11,9 +12,9 @@ public interface PassagemService {
 
 	void editar(Passagem passagem);
 
-	void excluir(Long id);
+	void excluir(UUID id);
 
-	Passagem buscarPorId(Long id);
+	Passagem buscarPorId(UUID id);
 
 	List<Passagem> buscarTodos();
 	

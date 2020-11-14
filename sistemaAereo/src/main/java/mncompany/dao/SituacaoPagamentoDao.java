@@ -2,7 +2,7 @@ package mncompany.dao;
 
 import java.util.List;
 
-import mncompany.domain.SituacaoPagamento;
+import mncompany.domain.entity.SituacaoPagamento;
 
 public interface SituacaoPagamentoDao {
 

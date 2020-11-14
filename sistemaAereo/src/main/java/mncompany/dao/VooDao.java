@@ -3,7 +3,7 @@ package mncompany.dao;
 import java.time.LocalDate;
 import java.util.List;
 
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Voo;
 
 public interface VooDao {
 	

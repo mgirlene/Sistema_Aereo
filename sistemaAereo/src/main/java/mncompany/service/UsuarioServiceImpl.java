@@ -1,51 +1,59 @@
 package mncompany.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mncompany.dao.UsuarioDao;
-import mncompany.domain.Usuario;
+import mncompany.domain.entity.Usuario;
+import mncompany.repository.UsuarioRepository;
 
 @Service
 @Transactional(readOnly = false)
 public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
-	private UsuarioDao dao;
+	private UsuarioRepository repository;
+	
+	public UsuarioServiceImpl(UsuarioRepository repository) {
+		this.repository = repository;
+	}
 
 	@Override
 	public void salvar(Usuario usuario) {
-		dao.save(usuario);
+		this.repository.save(usuario);
 	}
 
 	@Override
 	public void editar(Usuario usuario) {
-		dao.update(usuario);
+		this.salvar(usuario);
 	}
 
 	@Override
-	public void excluir(Long id) {
-		dao.delete(id);
+	public void excluir(UUID id) {
+		Usuario usuario = this.buscarPorId(id);
+		this.repository.delete(usuario);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Usuario buscarPorId(Long id) {
-		return dao.findById(id);
+	public Usuario buscarPorId(UUID id) {
+		return this.repository.findById(id).orElseThrow(
+		        () -> new RuntimeException("O ID informado [%s] nÃ£o existe no banco."));
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Usuario> buscarTodos() {
-		return dao.findAll();
+		return this.repository.findAll();
 	}
 
 	@Override @Transactional(readOnly = true)
 	public Usuario buscarPorEmailESenha(String email, String senha) {
-		return dao.findByLoginAndPassword(email, senha);
+		return this.repository.findByEmailAndSenha(email, senha);
 	}
 
 }

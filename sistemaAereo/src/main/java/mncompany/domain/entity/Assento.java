@@ -1,4 +1,6 @@
-package mncompany.domain;
+package mncompany.domain.entity;
+
+import java.util.UUID;
 
 import javax.persistence.*;
 
@@ -8,24 +10,28 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Assento")
-public class Assento extends AbstractEntity<Long> {
+public class Assento extends BaseEntity {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID uuid;
 
-	@Column(name = "nome", nullable = false, length = 45)
+	@Column(nullable = false, length = 45)
 	private String nome;
 	
-	@Column(name = "disponibilidade", nullable = false)
+	@Column(nullable = false)
 	private boolean disponibilidade;
 	
-	@Column(name = "classe", nullable = false)
+	@Column( nullable = false)
 	private String classe;
 	
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
-	@Column(name = "preco", nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
+	@Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private float preco;
 
 	@ManyToOne
 	@JoinColumn(name = "id_voo")
-	private Voo id_voo;
+	private Voo idVoo;
 
 	public String getNome() {
 		return nome;
@@ -43,12 +49,12 @@ public class Assento extends AbstractEntity<Long> {
 		this.disponibilidade = disponibilidade;
 	}
 
-	public Voo getId_voo() {
-		return id_voo;
+	public Voo getIdVoo() {
+		return idVoo;
 	}
 
-	public void setId_voo(Voo id_voo) {
-		this.id_voo = id_voo;
+	public void setIdVoo(Voo id_voo) {
+		this.idVoo = id_voo;
 	}
 
 	public String getClasse() {
@@ -65,5 +71,9 @@ public class Assento extends AbstractEntity<Long> {
 
 	public void setPreco(float preco) {
 		this.preco = preco;
+	}
+
+	public UUID getUuid() {
+		return uuid;
 	}
 }

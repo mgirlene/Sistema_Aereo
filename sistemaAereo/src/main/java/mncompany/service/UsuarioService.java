@@ -1,8 +1,9 @@
 package mncompany.service;
 
 import java.util.List;
+import java.util.UUID;
 
-import mncompany.domain.Usuario;
+import mncompany.domain.entity.Usuario;
 
 public interface UsuarioService {
 	
@@ -10,9 +11,9 @@ public interface UsuarioService {
 
 	void editar(Usuario usuario);
 
-	void excluir(Long id);
+	void excluir(UUID id);
 
-	Usuario buscarPorId(Long id);
+	Usuario buscarPorId(UUID id);
 
 	List<Usuario> buscarTodos();
 	

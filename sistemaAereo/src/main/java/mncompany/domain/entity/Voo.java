@@ -1,8 +1,9 @@
-package mncompany.domain;
+package mncompany.domain.entity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.*;
 
@@ -12,33 +13,37 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Voo")
-public class Voo extends AbstractEntity<Long> {
+public class Voo extends BaseEntity {
 
-	@Column(name = "origem", nullable = false, length = 45)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID uuid;
+
+	@Column(nullable = false, length = 45)
 	private String origem;
-	
-	@Column(name = "destino", nullable = false, length = 45)
+
+	@Column(nullable = false, length = 45)
 	private String destino;
-	
+
 	@DateTimeFormat(iso = ISO.DATE)
-	@Column(name = "data_saida", nullable = false, columnDefinition = "DATE")
+	@Column(nullable = false, columnDefinition = "DATE")
 	private LocalDate data_saida;
-	
+
 	@DateTimeFormat(iso = ISO.TIME)
-	@Column(name = "hora_saida", nullable = false, columnDefinition = "TIME")
+	@Column(nullable = false, columnDefinition = "TIME")
 	private LocalTime hora_saida;
-	
+
 	@DateTimeFormat(iso = ISO.DATE)
-	@Column(name = "data_chegada", nullable = false, columnDefinition = "DATE")
+	@Column(nullable = false, columnDefinition = "DATE")
 	private LocalDate data_chegada;
-	
+
 	@DateTimeFormat(iso = ISO.TIME)
-	@Column(name = "hora_chegada", nullable = false, columnDefinition = "TIME")
+	@Column(nullable = false, columnDefinition = "TIME")
 	private LocalTime hora_chegada;
-	
-	@Column(name = "companhia", nullable = false, length = 45)
+
+	@Column(nullable = false, length = 45)
 	private String companhia;
-	
+
 	@OneToMany(mappedBy = "id_voo")
 	private List<Assento> assentos;
 
@@ -105,5 +110,9 @@ public class Voo extends AbstractEntity<Long> {
 	public void setAssentos(List<Assento> assentos) {
 		this.assentos = assentos;
 	}
-	
+
+	public UUID getUuid() {
+		return uuid;
+	}
+
 }

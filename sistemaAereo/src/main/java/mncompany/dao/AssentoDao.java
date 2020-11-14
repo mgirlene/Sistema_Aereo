@@ -2,8 +2,8 @@ package mncompany.dao;
 
 import java.util.List;
 
-import mncompany.domain.Assento;
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Assento;
+import mncompany.domain.entity.Voo;
 
 public interface AssentoDao {
 

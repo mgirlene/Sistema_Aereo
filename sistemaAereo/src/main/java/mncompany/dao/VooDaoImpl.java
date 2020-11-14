@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Voo;
 
 @Repository
 public class VooDaoImpl extends AbstractDao<Voo, Long> implements VooDao  {

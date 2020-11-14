@@ -1,9 +1,10 @@
 package mncompany.service;
 
 import java.util.List;
+import java.util.UUID;
 
-import mncompany.domain.Assento;
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Assento;
+import mncompany.domain.entity.Voo;
 
 public interface AssentoService {
 
@@ -11,11 +12,13 @@ public interface AssentoService {
 
 	void editar(Assento assento);
 
-	void excluir(Long id);
+	void excluir(UUID id);
 
-	Assento buscarPorId(Long id);
+	Assento buscarPorId(UUID id);
 
 	List<Assento> buscarTodos();
 	
 	List<Assento> buscarPorAssentos(Voo voo);
+	
+	List<Assento> buscarAssentosDisponiveis(Voo voo);
 }

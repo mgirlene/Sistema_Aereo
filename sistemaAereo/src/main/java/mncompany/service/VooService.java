@@ -2,8 +2,9 @@ package mncompany.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Voo;
 
 public interface VooService {
 	
@@ -11,9 +12,9 @@ public interface VooService {
 
 	void editar(Voo voo);
 
-	void excluir(Long id);
+	void excluir(UUID id);
 
-	Voo buscarPorId(Long id);
+	Voo buscarPorId(UUID id);
 
 	List<Voo> buscarTodos();
 	

@@ -8,9 +8,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import mncompany.domain.Assento;
-import mncompany.domain.Usuario;
-import mncompany.domain.Voo;
+import mncompany.domain.entity.Assento;
+import mncompany.domain.entity.Usuario;
+import mncompany.domain.entity.Voo;
 import mncompany.service.AssentoService;
 import mncompany.service.UsuarioService;
 import mncompany.service.VooService;

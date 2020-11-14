@@ -1,23 +1,28 @@
-package mncompany.domain;
+package mncompany.domain.entity;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
-public class Usuario extends AbstractEntity<Long> {
-	
-	@Column(name = "nome", nullable = false, length = 45)
+public class Usuario extends BaseEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID uuid;
+
+	@Column(nullable = false, length = 45)
 	private String nome;
-	
-	@Column(name = "email", nullable = false, unique = true, length = 45)
+
+	@Column(nullable = false, length = 45)
 	private String email;
-	
-	@Column(name = "senha", nullable = false, length = 45)
+
+	@Column(nullable = false, length = 45)
 	private String senha;
-	
+
 	@OneToMany(mappedBy = "id_usuario")
 	private List<Passagem> passagens;
 
@@ -43,5 +48,17 @@ public class Usuario extends AbstractEntity<Long> {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public List<Passagem> getPassagens() {
+		return passagens;
+	}
+
+	public void setPassagens(List<Passagem> passagens) {
+		this.passagens = passagens;
 	}
 }

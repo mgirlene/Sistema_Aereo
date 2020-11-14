@@ -2,7 +2,7 @@ package mncompany.dao;
 
 import java.util.List;
 
-import mncompany.domain.Usuario;
+import mncompany.domain.entity.Usuario;
 
 public interface UsuarioDao {
 	

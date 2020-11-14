@@ -2,8 +2,8 @@ package mncompany.dao;
 
 import java.util.List;
 
-import mncompany.domain.Passagem;
-import mncompany.domain.Usuario;
+import mncompany.domain.entity.Passagem;
+import mncompany.domain.entity.Usuario;
 
 public interface PassagemDao {
 	
