@@ -23,7 +23,7 @@ public class Usuario extends BaseEntity {
 	@Column(nullable = false, length = 45)
 	private String senha;
 
-	@OneToMany(mappedBy = "id_usuario")
+	@OneToMany(mappedBy = "usuario")
 	private List<Passagem> passagens;
 
 	public String getNome() {

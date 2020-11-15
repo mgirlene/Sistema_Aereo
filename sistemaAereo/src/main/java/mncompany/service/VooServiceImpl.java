@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import mncompany.dao.VooDao;
 import mncompany.domain.entity.Voo;
 import mncompany.repository.VooRepository;
 

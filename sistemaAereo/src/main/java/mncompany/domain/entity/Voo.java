@@ -44,7 +44,7 @@ public class Voo extends BaseEntity {
 	@Column(nullable = false, length = 45)
 	private String companhia;
 
-	@OneToMany(mappedBy = "id_voo")
+	@OneToMany(mappedBy  = "voo")
 	private List<Assento> assentos;
 
 	public String getOrigem() {

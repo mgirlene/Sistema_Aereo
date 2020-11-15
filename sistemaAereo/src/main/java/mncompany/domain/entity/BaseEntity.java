@@ -8,6 +8,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
+@SuppressWarnings("serial")
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 	

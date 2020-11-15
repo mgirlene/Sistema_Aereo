@@ -1,5 +1,5 @@
 package mncompany.controller;
-
+/*
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ import mncompany.domain.entity.Voo;
 import mncompany.service.AssentoService;
 import mncompany.service.UsuarioService;
 import mncompany.service.VooService;
-
-@Controller
+*/
+//@Controller
 public class SistemaController {
-	
+	/*
 	@Autowired
 	private UsuarioService serviceUsuario;
 	
@@ -44,7 +44,7 @@ public class SistemaController {
 	public String home(Voo voo) {
 		this.voo = voo;
 		this.voos = serviceVoo.buscarPorVoos(voo.getOrigem(), voo.getDestino(), voo.getData_saida());
-		this.assento.setId_voo(voo);
+		this.assento.setIdVoo(voo);
 		return "home";
 	}
 
@@ -69,9 +69,9 @@ public class SistemaController {
 	@PostMapping("/pesquisarPassagem")
 	public String pesquisarPassagem(ModelMap model) {
 		model.addAttribute("voo", this.voos);
-		model.addAttribute("assento", serviceAssento.buscarPorAssentos(this.assento.getId_voo()));
+		model.addAttribute("assento", serviceAssento.buscarPorAssentos(this.assento.getIdVoo()));
 		return "passagens";
 	}
-	
+	*/
 	
 }

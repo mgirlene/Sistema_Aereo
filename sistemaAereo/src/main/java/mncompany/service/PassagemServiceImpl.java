@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import mncompany.dao.PassagemDao;
 import mncompany.domain.entity.Passagem;
 import mncompany.domain.entity.Usuario;
 import mncompany.repository.PassagemRepository;

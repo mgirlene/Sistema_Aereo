@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
-                    <form th:action="@{/fazerLogin}" th:object="${usuario}" method="POST">
+                    <form th:action="@{login}" th:object="${usuario}" method="POST">
                         <div class="form-group">
                             <input type="email" class="form-control" id="lEmail" placeholder="Email" th:field="*{email}" required/>
                         </div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-6 login-form-2">
                     <h3>Cadastre-se</h3>
-                    <form th:action="@{/cadastrar}" th:object="${usuario}" method="POST">
+                    <form th:action="@{cadastrar}" th:object="${usuario}" method="POST">
                         <div class="form-group">
                             <input type="text" class="form-control" id="cNome" placeholder="Nome *" th:field="*{nome}" required/>
                         </div>
