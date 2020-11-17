@@ -19,7 +19,7 @@ import mncompany.service.UsuarioService;
 import mncompany.service.VooService;
 
 @Controller
-public class UsuarioController {
+public class IndexController {
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -90,7 +90,10 @@ public class UsuarioController {
 		List<Voo> voosVolta = vooService.buscarPorVoos(pesquisaVoo.getDestino(), pesquisaVoo.getOrigem(), pesquisaVoo.getDataVolta());
 		mv.addObject("voosVolta", voosVolta);
 		
-		/*ModelAndView mv = new ModelAndView("passagens");
+		/*List<Assento> assentos = assentoService.buscarAssentosDisponiveis(voosIda.get(0));
+		mv.addObject("assentos", assentos);
+		
+		ModelAndView mv = new ModelAndView("passagens");
 		mv.addObject("voos", vooService.buscarTodos());*/
 		
 		return mv;

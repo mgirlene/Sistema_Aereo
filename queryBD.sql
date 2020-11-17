@@ -43,14 +43,19 @@ VALUES ("A1", true, "primeira", 2000, 1), ("B1", true, "primeira", 2000, 1), ("C
 ("A24", true, "economica", 1000, 1), ("B24", true, "economica", 1000, 1), ("C24", true, "economica", 1000, 1), ("D24", true, "economica", 1000, 1), ("E24", true, "economica", 1000, 1), ("F24", true, "economica", 1000, 1);
 
 INSERT INTO passagem(id_usuario, id_pagamento, id_assento)
-VALUES(1, 1, 5), (2, 2, 12), (3, 3, 16);
+VALUES(1, 1, 5), (2, 2, 12), (3, 3, 16), (1, 1, 10), (3,1,130);
 
-select p.id idPassagem, u.id as idUsuario, v.id as idVoo, v.companhia as companhia, v.origem as origem, v.destino as destino, v.data_saida as dataSaida,
-v.hora_saida as horaSaida, v.data_chegada as dataChegada, v.hora_chegada as horaChegada,
-s.status as status, a.classe as classe, a.preco as preco, a.nome as nome from passagem as p
-inner join usuario as u on p.id_usuario = u.id
-inner join situacao_pagamento as s on p.id_pagamento = s.id
-inner join assento as a on p.id_assento = a.id
-inner join voo as v on a.id_voo = v.id;
+select * from passagem as p
+inner join usuario as u on (p.id_usuario = u.id)
+inner join situacao_pagamento as s on (p.id_pagamento = s.id)
+inner join assento as a on (p.id_assento = a.id)
+inner join voo as v on (a.id_voo = v.id)
+where p.id_usuario = 2;
 
 select * from passagem as p inner join usuario as u on p.id_usuario = u.id inner join situacao_pagamento as s on p.id_pagamento = s.id inner join assento as a on p.id_assento = a.id inner join voo as v on a.id_voo = v.id where u.id = 1;
+
+update assento set disponibilidade = false
+where id = 135;
+
+update voo set destino = "Curitiba"
+where id = 5;

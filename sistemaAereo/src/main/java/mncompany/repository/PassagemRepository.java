@@ -17,7 +17,7 @@ public interface PassagemRepository  extends JpaRepository<Passagem, Long> {
 			+ "inner join situacao_pagamento as s on (p.id_pagamento = s.id) "
 			+ "inner join assento as a on (p.id_assento = a.id) "
 			+ "inner join voo as v on (a.id_voo = v.id) "
-			+ "where u.id = ?", nativeQuery = true)
+			+ "where p.id_usuario = ?", nativeQuery = true)
 	List<Passagem> findByJoin(Long id);
 	
 }

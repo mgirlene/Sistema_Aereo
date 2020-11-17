@@ -1,5 +1,5 @@
 package mncompany.controller;
-
+/*
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import mncompany.domain.entity.PesquisaVoo;
 import mncompany.service.VooService;
 
-@Controller
+@Controller*/
 public class VooController {
-	
+	/*
 	private Long id;
 	
 	@Autowired
@@ -48,6 +48,6 @@ public class VooController {
 		
 		return mv;
 		
-	}
+	}*/
 
 }
