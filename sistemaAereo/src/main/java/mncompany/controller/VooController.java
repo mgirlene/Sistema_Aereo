@@ -1,7 +1,6 @@
 package mncompany.controller;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,26 +16,26 @@ import mncompany.service.VooService;
 @Controller
 public class VooController {
 	
-	private UUID id;
+	private Long id;
 	
 	@Autowired
 	private VooService vooService;
 	
 	
 	@GetMapping("/pesquisarPassagem/{id}")
-	public String pesquisa(PesquisaVoo voo, @PathVariable("id") UUID id) {
+	public String pesquisa(PesquisaVoo voo, @PathVariable("id") Long id) {
 		this.id = id;
 		return "home";
 	}
 	
 	@PostMapping("/pesquisarPassagem/{id}")
-	public ModelAndView buscar(@RequestBody PesquisaVoo voo, @PathVariable("id") UUID id) {
+	public ModelAndView buscar(@RequestBody PesquisaVoo voo, @PathVariable("id") Long id) {
 		return new ModelAndView("/listagem/{" + id + "}/{" + voo.getOrigem() + "}/{" + voo.getDestino() + "}/{" + voo.getDataIda() 
 		+ "}/{" + voo.getDataVolta() + "}/{" + voo.getClasse() + "}");
 	}
 	
 	@GetMapping("/listagem/{id}/{origem}/{destino}/{dataIda}/{dataVolta}/{classe}")
-	public ModelAndView listagem(@PathVariable("id") UUID id, @PathVariable("origem") String origem, @PathVariable("destino") String destino,
+	public ModelAndView listagem(@PathVariable("id") Long id, @PathVariable("origem") String origem, @PathVariable("destino") String destino,
 			@PathVariable("dataIda") LocalDate dataIda, @PathVariable("dataVolta") LocalDate dataVolta, @PathVariable("classe") String classe) {
 		
 		ModelAndView mv = new ModelAndView("/reservas/{id}");

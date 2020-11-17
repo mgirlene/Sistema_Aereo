@@ -1,6 +1,7 @@
 package mncompany.domain.entity;
 
-import java.util.UUID;
+
+import java.io.Serializable;
 
 import javax.persistence.*;
 
@@ -10,11 +11,11 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Assento")
-public class Assento extends BaseEntity {
+public class Assento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID uuid;
+	private Long id;
 
 	@Column(nullable = false, length = 45)
 	private String nome;
@@ -32,6 +33,10 @@ public class Assento extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "id_voo")
 	private Voo idVoo;
+	
+	@OneToOne(mappedBy="idAssento")
+	private Passagem passagem;
+
 
 	public String getNome() {
 		return nome;
@@ -73,7 +78,9 @@ public class Assento extends BaseEntity {
 		this.preco = preco;
 	}
 
-	public UUID getUuid() {
-		return uuid;
+	public Long getId() {
+		return id;
 	}
+
+	
 }

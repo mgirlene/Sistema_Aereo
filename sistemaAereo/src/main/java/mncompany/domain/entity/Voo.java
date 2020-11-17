@@ -1,9 +1,9 @@
 package mncompany.domain.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.*;
 
@@ -13,11 +13,11 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Voo")
-public class Voo extends BaseEntity {
+public class Voo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID uuid;
+	private Long id;
 
 	@Column(nullable = false, length = 45)
 	private String origem;
@@ -26,25 +26,25 @@ public class Voo extends BaseEntity {
 	private String destino;
 
 	@DateTimeFormat(iso = ISO.DATE)
-	@Column(nullable = false, columnDefinition = "DATE")
-	private LocalDate data_saida;
+	@Column(name = "data_saida", nullable = false, columnDefinition = "DATE")
+	private LocalDate dataSaida;
 
 	@DateTimeFormat(iso = ISO.TIME)
-	@Column(nullable = false, columnDefinition = "TIME")
-	private LocalTime hora_saida;
+	@Column(name = "hora_saida", nullable = false, columnDefinition = "TIME")
+	private LocalTime horaSaida;
 
 	@DateTimeFormat(iso = ISO.DATE)
-	@Column(nullable = false, columnDefinition = "DATE")
-	private LocalDate data_chegada;
+	@Column(name = "data_chegada", nullable = false, columnDefinition = "DATE")
+	private LocalDate dataChegada;
 
 	@DateTimeFormat(iso = ISO.TIME)
-	@Column(nullable = false, columnDefinition = "TIME")
-	private LocalTime hora_chegada;
+	@Column(name = "hora_chegada", nullable = false, columnDefinition = "TIME")
+	private LocalTime horaChegada;
 
 	@Column(nullable = false, length = 45)
 	private String companhia;
 
-	@OneToMany(mappedBy  = "voo")
+	@OneToMany(mappedBy  = "idVoo")
 	private List<Assento> assentos;
 
 	public String getOrigem() {
@@ -63,36 +63,36 @@ public class Voo extends BaseEntity {
 		this.destino = destino;
 	}
 
-	public LocalDate getData_saida() {
-		return data_saida;
+	public LocalDate getDataSaida() {
+		return dataSaida;
 	}
 
-	public void setData_saida(LocalDate data_saida) {
-		this.data_saida = data_saida;
+	public void setDataSaida(LocalDate dataSaida) {
+		this.dataSaida = dataSaida;
 	}
 
-	public LocalTime getHora_saida() {
-		return hora_saida;
+	public LocalTime getHoraSaida() {
+		return horaSaida;
 	}
 
-	public void setHora_saida(LocalTime hora_saida) {
-		this.hora_saida = hora_saida;
+	public void setHoraSaida(LocalTime horaSaida) {
+		this.horaSaida = horaSaida;
 	}
 
-	public LocalDate getData_chegada() {
-		return data_chegada;
+	public LocalDate getDataChegada() {
+		return dataChegada;
 	}
 
-	public void setData_chegada(LocalDate data_chegada) {
-		this.data_chegada = data_chegada;
+	public void setDataChegada(LocalDate dataChegada) {
+		this.dataChegada = dataChegada;
 	}
 
-	public LocalTime getHora_chegada() {
-		return hora_chegada;
+	public LocalTime getHoraChegada() {
+		return horaChegada;
 	}
 
-	public void setHora_chegada(LocalTime hora_chegada) {
-		this.hora_chegada = hora_chegada;
+	public void setHoraChegada(LocalTime horaChegada) {
+		this.horaChegada = horaChegada;
 	}
 
 	public String getCompanhia() {
@@ -111,8 +111,8 @@ public class Voo extends BaseEntity {
 		this.assentos = assentos;
 	}
 
-	public UUID getUuid() {
-		return uuid;
+	public Long getId() {
+		return id;
 	}
 
 }

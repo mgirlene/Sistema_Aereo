@@ -1,9 +1,7 @@
 package mncompany.service;
 
 import java.util.List;
-import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +12,6 @@ import mncompany.repository.SituacaoPagamentoRepository;
 @Transactional(readOnly = false)
 public class SituacaoPagamentoServiceImpl implements SituacaoPagamentoService {
 
-	@Autowired
 	private SituacaoPagamentoRepository repository;
 
 	public SituacaoPagamentoServiceImpl(SituacaoPagamentoRepository repository) {
@@ -32,14 +29,14 @@ public class SituacaoPagamentoServiceImpl implements SituacaoPagamentoService {
 	}
 
 	@Override
-	public void excluir(UUID id) {
+	public void excluir(Long id) {
 		SituacaoPagamento situacao = this.buscarPorId(id);
 		this.repository.delete(situacao);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public SituacaoPagamento buscarPorId(UUID id) {
+	public SituacaoPagamento buscarPorId(Long id) {
 		return this.repository.findById(id).orElseThrow(() -> 
 			new RuntimeException("O ID informado [%s] não existe no banco."));
 	}

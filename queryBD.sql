@@ -13,9 +13,9 @@ VALUES ("Fortaleza", "São Paulo", "2020-11-20", "13:00:00", "2020-11-20", "16:3
 ("Bahia", "Coritiba", "2020-12-10", "12:00:00", "2020-12-10", "15:30:00", "GOL");
 
 INSERT INTO situacao_pagamento(status)
-VALUES ("concluida"), ("em andamento"), ("cancelado");
+VALUES ("concluida"), ("andamento"), ("cancelado");
 
-#FAZER PARA OS IDS DE 2 ATE 7
+#FAZER PARA OS OUTROS IDS
 INSERT INTO assento(nome, disponibilidade, classe, preco, id_voo)
 VALUES ("A1", true, "primeira", 2000, 1), ("B1", true, "primeira", 2000, 1), ("C1", true, "primeira", 2000, 1), ("D1", true, "primeira", 2000, 1), ("E1", true, "primeira", 2000, 1), ("F1", true, "primeira", 2000, 1),
 ("A2", true, "primeira", 2000, 1), ("B2", true, "primeira", 2000, 1), ("C2", true, "primeira", 2000, 1), ("D2", true, "primeira", 2000, 1), ("E2", true, "primeira", 2000, 1), ("F2", true, "primeira", 2000, 1),
@@ -43,4 +43,14 @@ VALUES ("A1", true, "primeira", 2000, 1), ("B1", true, "primeira", 2000, 1), ("C
 ("A24", true, "economica", 1000, 1), ("B24", true, "economica", 1000, 1), ("C24", true, "economica", 1000, 1), ("D24", true, "economica", 1000, 1), ("E24", true, "economica", 1000, 1), ("F24", true, "economica", 1000, 1);
 
 INSERT INTO passagem(id_usuario, id_pagamento, id_assento)
-VALUES(9, 1, 5), (10, 2, 12), (11, 3, 16);
+VALUES(1, 1, 5), (2, 2, 12), (3, 3, 16);
+
+select p.id idPassagem, u.id as idUsuario, v.id as idVoo, v.companhia as companhia, v.origem as origem, v.destino as destino, v.data_saida as dataSaida,
+v.hora_saida as horaSaida, v.data_chegada as dataChegada, v.hora_chegada as horaChegada,
+s.status as status, a.classe as classe, a.preco as preco, a.nome as nome from passagem as p
+inner join usuario as u on p.id_usuario = u.id
+inner join situacao_pagamento as s on p.id_pagamento = s.id
+inner join assento as a on p.id_assento = a.id
+inner join voo as v on a.id_voo = v.id;
+
+select * from passagem as p inner join usuario as u on p.id_usuario = u.id inner join situacao_pagamento as s on p.id_pagamento = s.id inner join assento as a on p.id_assento = a.id inner join voo as v on a.id_voo = v.id where u.id = 1;

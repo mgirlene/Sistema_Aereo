@@ -2,14 +2,19 @@ package mncompany.domain.entity;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class PesquisaVoo {
 	
 	private String origem;
 	
 	private String destino;
 	
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataIda;
 	
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataVolta;
 	
 	private String classe;
@@ -30,6 +35,7 @@ public class PesquisaVoo {
 		this.destino = destino;
 	}
 
+	
 	public LocalDate getDataIda() {
 		return dataIda;
 	}

@@ -31,25 +31,25 @@
 								<th><p>Ação</p></th>
 
 							</tr>
-							<tr>
+							<tr th:each="r : ${passagens}">
 								<td>
-									<p>1</p>
+									<p th:text="${r.idVoo}">1</p>
 								</td>
-								<td><p>Azul</p></td>
+								<td><p th:text="${r.companhia}">Azul</p></td>
 
 								<td>
 									<figure class="media">
 										<figcaption class="media-body">
-											<h6 class="title text-truncate">Fortaleza-CE</h6>
+											<h6 class="title text-truncate" th:text="${r.origem}">Fortaleza-CE</h6>
 											<dl class="param param-inline small">
 												<dd>
-													<b>Data:</b> 18/11/2020
+													<b>Data: </b> <label th:text="${r.dataSaida}">18/11/2020</label>
 												</dd>
 
 											</dl>
 											<dl class="param param-inline small">
 												<dd>
-													<b>Hora:</b> 20:00
+													<b>Hora: </b><label th:text="${r.horaSaida}">20:00</label>
 												</dd>
 											</dl>
 										</figcaption>
@@ -58,32 +58,32 @@
 								<td>
 									<figure class="media">
 										<figcaption class="media-body">
-											<h6 class="title text-truncate">São Paulo-SP</h6>
+											<h6 class="title text-truncate" th:text="${r.destino}">São Paulo-SP</h6>
 											<dl class="param param-inline small">
 												<dd>
-													<b>Data:</b> 18/11/2020
+													<b>Data:</b><label th:text="${r.dataChegada}">18/11/2020</label>
 												</dd>
 
 											</dl>
 											<dl class="param param-inline small">
 												<dd>
-													<b>Hora:</b> 23:00
+													<b>Hora:</b><label th:text="${r.horaChegada}">23:00</label>
 												</dd>
 											</dl>
 										</figcaption>
 									</figure>
 								</td>
 								<td>
-									<p>Econômica</p>
+									<p th:text="${r.classe}">Econômica</p>
 								</td>
 								<td>
-									<p>A10</p>
+									<p th:text="${r.nome}">A10</p>
 								</td>
 								<td>
-									<p>R$1000.00</p>
+									<p th:text="${r.preco}">R$2000.00</p>
 								</td>
 								<td>
-									<p>Em andamento</p>
+									<p th:text="${r.status}">Em andamento</p>
 								</td>
 								<td><a class="btn btn-danger btn-sm" href="" role="button">
 										<span class="oi oi-circle-x" title="Cancelar"

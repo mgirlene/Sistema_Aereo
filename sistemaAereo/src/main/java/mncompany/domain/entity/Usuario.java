@@ -1,18 +1,18 @@
 package mncompany.domain.entity;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
-public class Usuario extends BaseEntity {
+public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID uuid;
+	private Long id;
 
 	@Column(nullable = false, length = 45)
 	private String nome;
@@ -23,7 +23,7 @@ public class Usuario extends BaseEntity {
 	@Column(nullable = false, length = 45)
 	private String senha;
 
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "idUsuario")
 	private List<Passagem> passagens;
 
 	public String getNome() {
@@ -50,8 +50,8 @@ public class Usuario extends BaseEntity {
 		this.senha = senha;
 	}
 
-	public UUID getUuid() {
-		return uuid;
+	public Long getId() {
+		return id;
 	}
 
 	public List<Passagem> getPassagens() {

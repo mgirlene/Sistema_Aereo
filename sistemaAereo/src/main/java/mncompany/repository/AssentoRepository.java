@@ -1,14 +1,14 @@
 package mncompany.repository;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import mncompany.domain.entity.Assento;
-import mncompany.domain.entity.Voo;
 
-public interface AssentoRepository extends JpaRepository<Assento, UUID> {
+@Repository
+public interface AssentoRepository extends JpaRepository<Assento, Long> {
 
-	List<Assento> findByIdVoo(Voo voo);
+	List<Assento> findByIdVoo(Long id);
 }

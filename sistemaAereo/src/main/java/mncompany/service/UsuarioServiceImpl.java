@@ -1,9 +1,7 @@
 package mncompany.service;
 
 import java.util.List;
-import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +12,6 @@ import mncompany.repository.UsuarioRepository;
 @Transactional(readOnly = false)
 public class UsuarioServiceImpl implements UsuarioService {
 
-	@Autowired
 	private UsuarioRepository repository;
 	
 	public UsuarioServiceImpl(UsuarioRepository repository) {
@@ -32,14 +29,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void excluir(UUID id) {
+	public void excluir(Long id) {
 		Usuario usuario = this.buscarPorId(id);
 		this.repository.delete(usuario);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Usuario buscarPorId(UUID id) {
+	public Usuario buscarPorId(Long id) {
 		return this.repository.findById(id).orElseThrow(
 		        () -> new RuntimeException("O ID informado [%s] nÃ£o existe no banco."));
 	}
@@ -53,6 +50,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override @Transactional(readOnly = true)
 	public Usuario buscarPorEmailESenha(String email, String senha) {
 		return this.repository.findByEmailAndSenha(email, senha);
+	}
+
+	@Override
+	public Usuario buscarPorEmail(String email) {
+		return this.repository.findByEmail(email);
 	}
 
 }

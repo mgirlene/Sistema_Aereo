@@ -1,7 +1,6 @@
 package mncompany.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import mncompany.domain.entity.Usuario;
 
@@ -11,12 +10,13 @@ public interface UsuarioService {
 
 	void editar(Usuario usuario);
 
-	void excluir(UUID id);
+	void excluir(Long id);
 
-	Usuario buscarPorId(UUID id);
+	Usuario buscarPorId(Long id);
 
 	List<Usuario> buscarTodos();
 	
 	Usuario buscarPorEmailESenha(String email, String senha);
 
+	Usuario buscarPorEmail(String email);
 }

@@ -2,7 +2,6 @@ package mncompany.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 import mncompany.domain.entity.Voo;
 
@@ -12,12 +11,12 @@ public interface VooService {
 
 	void editar(Voo voo);
 
-	void excluir(UUID id);
+	void excluir(Long id);
 
-	Voo buscarPorId(UUID id);
+	Voo buscarPorId(Long id);
 
 	List<Voo> buscarTodos();
 	
-	List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataIda);
+	List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataSaida);
 
 }

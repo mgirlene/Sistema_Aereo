@@ -1,17 +1,17 @@
 package mncompany.domain.entity;
 
-import java.util.UUID;
+import java.io.Serializable;
 
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Passagem")
-public class Passagem extends BaseEntity {
+public class Passagem implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID uuid;
+	private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
@@ -25,8 +25,8 @@ public class Passagem extends BaseEntity {
 	@JoinColumn(name="id_pagamento")
 	private SituacaoPagamento idPagamento;
 
-	public UUID getUuid() {
-		return uuid;
+	public Long getId() {
+		return id;
 	}
 
 	public Usuario getIdUsuario() {

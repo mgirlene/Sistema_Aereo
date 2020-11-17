@@ -1,20 +1,23 @@
 package mncompany.domain.entity;
 
-import java.util.UUID;
+import java.io.Serializable;
 
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "SituacaoPagamento")
-public class SituacaoPagamento extends BaseEntity {
+public class SituacaoPagamento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID uuid;
+	private Long id;
 
 	@Column(nullable = false, length = 45)
 	private String status;
+	
+	@OneToOne(mappedBy="idPagamento")
+	private Passagem passagem;
 
 	public String getStatus() {
 		return status;
@@ -24,7 +27,9 @@ public class SituacaoPagamento extends BaseEntity {
 		this.status = status;
 	}
 
-	public UUID getUuid() {
-		return uuid;
+	public Long getId() {
+		return id;
 	}
+
+	
 }
