@@ -19,4 +19,5 @@ public interface VooService {
 	
 	List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataSaida);
 
+	List<Voo> buscarPorCidades(String origem, String destino);
 }

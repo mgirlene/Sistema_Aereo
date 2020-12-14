@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
 	@Column(nullable = false, length = 45)
 	private String email;
 
-	@Column(nullable = false, length = 45)
+	@Column(nullable = false, length = 255)
 	private String senha;
 
 	@OneToMany(mappedBy = "idUsuario")
