@@ -65,8 +65,8 @@
 								<td><label><b>R$2000.00</b></label></td>
 								<td>
 									<label><b>Assento</b></label><br>
-									<select id="assento">
-										<option value="" disabled>Selecione</option>
+									<select id="assento" required>
+										<option value="" disabled selected>Selecione</option>
 										<option th:each="a : ${v.assentos}" th:value="${a.id}"
 										th:text="${a.nome}"></option>
 										

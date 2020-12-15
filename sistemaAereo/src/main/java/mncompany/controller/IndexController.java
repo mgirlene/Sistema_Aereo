@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import mncompany.domain.entity.Passagem;
@@ -21,8 +23,8 @@ import mncompany.service.VooService;
 
 @Controller
 public class IndexController {
-	@Autowired
-	private PasswordEncoder passwordencoder;
+	/*@Autowired
+	private PasswordEncoder passwordencoder;*/
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -42,6 +44,17 @@ public class IndexController {
 
 	}
 	
+	@GetMapping("/cadastrar")
+	public String cadastro(Usuario usuario) {
+		return "cadastro";
+
+	}
+	
+	@GetMapping("/teste/{id}")
+	public Usuario teste(@PathVariable(value = "id") Long id) {
+		return usuarioService.buscarPorId(id);
+	}
+	
 	@GetMapping("/paginaPrincipal")
 	public String home(Usuario usuario) {
 		return "home";
@@ -55,7 +68,8 @@ public class IndexController {
 			return new ModelAndView("login");
 		}
 		
-		usuario.setSenha(this.passwordencoder.encode(usuario.getSenha()));
+		//usuario.setSenha(this.passwordencoder.encode(usuario.getSenha()));
+		usuario.setSenha(usuario.getSenha());
 		usuarioService.salvar(usuario);
 		ModelAndView mv = new ModelAndView("login");
 		mv.addObject("usuario", usuario).addObject("logado", serviceSession.getSession("usuario-logado"));
@@ -65,7 +79,8 @@ public class IndexController {
 	
 	@PostMapping("/login")
 	public ModelAndView entrar(Usuario usuario) {		
-		Usuario user = usuarioService.buscarPorEmailESenha(usuario.getEmail(),this.passwordencoder.encode(usuario.getSenha()));
+		//Usuario user = usuarioService.buscarPorEmailESenha(usuario.getEmail(),this.passwordencoder.encode(usuario.getSenha()));
+		Usuario user = usuarioService.buscarPorEmailESenha(usuario.getEmail(),usuario.getSenha());
 		
 		if(user == null) {
 			return new ModelAndView("login");

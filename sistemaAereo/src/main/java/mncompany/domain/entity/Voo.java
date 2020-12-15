@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 public class Voo implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(nullable = false, length = 45)
