@@ -2,22 +2,30 @@ package mncompany.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import mncompany.domain.entity.Usuario;
 import mncompany.repository.UsuarioRepository;
 
 @Service
 @Transactional(readOnly = false)
+
 public class UsuarioServiceImpl implements UsuarioService {
+	
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	private UsuarioRepository repository;
 	
 	public UsuarioServiceImpl(UsuarioRepository repository) {
 		this.repository = repository;
 	}
-
 	@Override
 	public void salvar(Usuario usuario) {
 		this.repository.save(usuario);
@@ -55,6 +63,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario buscarPorEmail(String email) {
 		return this.repository.findByEmail(email);
+	}
+	
+	public Usuario getEmail(String email) {
+		return repository.findByEmail(email);
+	}
+	
+	public boolean verificarSenha(String senha, Usuario usuario) {
+		return passwordEncoder.matches(senha, usuario.getSenha());
 	}
 
 }

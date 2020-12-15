@@ -51,5 +51,10 @@ public class VooServiceImpl implements VooService {
 		return this.repository.findByOrigemAndDestinoAndDataSaida(origem, destino, dataSaida);
 	}
 	
+	@Override @Transactional(readOnly = true)
+	public List<Voo> buscarPorCidades(String origem, String destino) {
+		return this.repository.findByOrigemAndDestino(origem, destino);
+	}
+	
 
 }
