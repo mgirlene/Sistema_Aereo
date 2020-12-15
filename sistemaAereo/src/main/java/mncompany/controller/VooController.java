@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import mncompany.domain.entity.PesquisaVoo;
 import mncompany.service.VooService;
 
-@Controller*/
+@RestController*/
 public class VooController {
 	/*
 	private Long id;

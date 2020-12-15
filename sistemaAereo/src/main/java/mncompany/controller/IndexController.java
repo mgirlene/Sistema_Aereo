@@ -4,9 +4,10 @@ package mncompany.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import mncompany.domain.entity.Passagem;
@@ -18,7 +19,7 @@ import mncompany.service.SessionService;
 import mncompany.service.UsuarioService;
 import mncompany.service.VooService;
 
-@Controller
+@RestController
 public class IndexController {
 
 	@Autowired
@@ -36,6 +37,12 @@ public class IndexController {
 	@GetMapping("/")
 	public String login(Usuario usuario) {
 		return "login";
+
+	}
+	
+	@GetMapping("/teste/{id}")
+	public Usuario teste(@PathVariable(value = "id") Long id) {
+		return usuarioService.buscarPorId(id);
 
 	}
 	
