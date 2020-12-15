@@ -53,7 +53,6 @@ public class IndexController {
 	@GetMapping("/teste/{id}")
 	public Usuario teste(@PathVariable(value = "id") Long id) {
 		return usuarioService.buscarPorId(id);
-
 	}
 	
 	@GetMapping("/paginaPrincipal")
