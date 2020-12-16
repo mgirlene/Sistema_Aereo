@@ -1,6 +1,5 @@
 package mncompany.api;
 
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -23,79 +22,78 @@ import mncompany.service.VooService;
 @RestController
 @RequestMapping(value = "/api/voo")
 public class vooResource {
-	
+
 	@Autowired
 	private VooService vooService;
-	
+
 	@CrossOrigin
 	@PostMapping("/savevoo")
 	public ResponseEntity<Voo> saveVoo(@RequestBody Voo voo) {
-		if(voo != null) {
+		if (voo != null) {
 			vooService.salvar(voo);
 			return ResponseEntity.ok(voo);
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@CrossOrigin
 	@PostMapping("/updatevoo")
 	public ResponseEntity<Voo> updateVoo(@RequestBody Voo voo) {
-		if(voo != null) {
+		if (voo != null) {
 			vooService.editar(voo);
 			return ResponseEntity.ok(voo);
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@CrossOrigin
-	@DeleteMapping("/deletevoo")
-	public ResponseEntity<Voo> deleteVoo(@RequestBody Long id) {
+	@DeleteMapping("/deletevoo/{id}")
+	public ResponseEntity<Voo> deleteVoo(@PathVariable("id") Long id) {
 		Voo voo = vooService.buscarPorId(id);
-		if(voo != null) {
-			vooService.excluir(id);;
+		if (voo != null) {
+			vooService.excluir(id);
 			return ResponseEntity.ok().build();
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findall")
 	public ResponseEntity<List<Voo>> findAll() {
 		List<Voo> voos = vooService.buscarTodos();
-		if(!voos.isEmpty())
+		if (!voos.isEmpty())
 			return ResponseEntity.ok(voos);
-		
+
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findid/{id}")
 	public ResponseEntity<Voo> findId(@PathVariable("id") Long id) {
 		Voo voo = vooService.buscarPorId(id);
-		
-		if(voo != null)
+
+		if (voo != null)
 			return ResponseEntity.ok(voo);
-		
+
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@GetMapping("/findvoo/{origem}/{destino}/{data}")
-	public ResponseEntity<List<Voo>> findVoo(@PathVariable("origem") String origem, 
-			@PathVariable("destino") String destino,
-			@PathVariable("data") String data) {
-		
+	public ResponseEntity<List<Voo>> findVoo(@PathVariable("origem") String origem,
+			@PathVariable("destino") String destino, @PathVariable("data") String data) {
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate date = LocalDate.parse(data, formatter);
-		
+
 		List<Voo> voos = vooService.buscarPorVoos(origem, destino, date);
-		
-		if(!voos.isEmpty())
+
+		if (!voos.isEmpty())
 			return ResponseEntity.ok(voos);
-		
+
 		return ResponseEntity.notFound().build();
 	}
-	
+
 }

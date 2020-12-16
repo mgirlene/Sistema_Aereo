@@ -46,12 +46,12 @@ public class situacaoPagResource {
 	}
 	
 	@CrossOrigin
-	@DeleteMapping("/deletesit")
-	public ResponseEntity<SituacaoPagamento> deleteVoo(@RequestBody Long id) {
+	@DeleteMapping("/deletesit/{id}")
+	public ResponseEntity<SituacaoPagamento> deletesit(@PathVariable("id") Long id) {
 		SituacaoPagamento sit = sitpagService.buscarPorId(id);
 		if(sit != null) {
-			sitpagService.excluir(id);;
-			return ResponseEntity.ok().build();
+			sitpagService.excluir(id);
+			return ResponseEntity.ok(sit);
 		}
 		
 		return ResponseEntity.notFound().build();
