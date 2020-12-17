@@ -3,12 +3,14 @@ package mncompany.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,21 +30,21 @@ public class AssentoResource {
 	public ResponseEntity<Assento> saveAssento(@RequestBody Assento assento) {
 		if (assento != null) {
 			assentoService.salvar(assento);
-			return ResponseEntity.ok(assento);
+			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ResponseEntity<Assento> updateAssento(@RequestBody Assento assento) {
 		if (assento != null) {
 			assentoService.editar(assento);
-			return ResponseEntity.ok(assento);
+			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
@@ -51,10 +53,10 @@ public class AssentoResource {
 		Assento assento = assentoService.buscarPorId(id);
 		if (assento != null) {
 			assentoService.excluir(id);
-			return ResponseEntity.ok().build();
+			return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 		}
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
@@ -62,9 +64,9 @@ public class AssentoResource {
 	public ResponseEntity<List<Assento>> findAll() {
 		List<Assento> assentos = assentoService.buscarTodos();
 		if (!assentos.isEmpty())
-			return ResponseEntity.ok(assentos);
+			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
@@ -73,9 +75,9 @@ public class AssentoResource {
 		Assento assento = assentoService.buscarPorId(id);
 
 		if (assento != null)
-			return ResponseEntity.ok(assento);
+			return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
 	}
 
 }

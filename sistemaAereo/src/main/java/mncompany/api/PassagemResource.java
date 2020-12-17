@@ -3,12 +3,14 @@ package mncompany.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,21 +30,21 @@ public class PassagemResource {
 	public ResponseEntity<Passagem> savePassagem(@RequestBody Passagem passagem) {
 		if (passagem != null) {
 			passagemService.salvar(passagem);
-			return ResponseEntity.ok(passagem);
+			return new ResponseEntity<Passagem>(passagem, HttpStatus.CREATED);
 		}
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ResponseEntity<Passagem> updatePassagem(@RequestBody Passagem passagem) {
 		if (passagem != null) {
 			passagemService.editar(passagem);
-			return ResponseEntity.ok(passagem);
+			return new ResponseEntity<Passagem>(passagem, HttpStatus.CREATED);
 		}
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
@@ -51,10 +53,10 @@ public class PassagemResource {
 		Passagem passagem = passagemService.buscarPorId(id);
 		if (passagem != null) {
 			passagemService.excluir(id);
-			return ResponseEntity.ok().build();
+			return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 		}
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
@@ -62,9 +64,9 @@ public class PassagemResource {
 	public ResponseEntity<List<Passagem>> findAll() {
 		List<Passagem> passagens = passagemService.buscarTodos();
 		if (!passagens.isEmpty())
-			return ResponseEntity.ok(passagens);
+			return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.NOT_FOUND);
 	}
 
 	@CrossOrigin
@@ -73,9 +75,9 @@ public class PassagemResource {
 		Passagem passagem = passagemService.buscarPorId(id);
 
 		if (passagem != null)
-			return ResponseEntity.ok(passagem);
+			return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 
-		return ResponseEntity.notFound().build();
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
 	}
 
 }
