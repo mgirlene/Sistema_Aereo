@@ -28,7 +28,9 @@ public class UsuarioResource {
 	@CrossOrigin
 	@PostMapping("/save")
 	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario) {
-		if (usuario != null) {
+		Usuario user = usuarioService.buscarPorEmail(usuario.getEmail());
+		
+		if (usuario != null && user == null) {
 			usuarioService.salvar(usuario);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
 		}
@@ -39,7 +41,8 @@ public class UsuarioResource {
 	@CrossOrigin
 	@PutMapping("/update")
 	public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuario) {
-		if (usuario != null) {
+		Usuario user = usuarioService.buscarPorId(usuario.getId());
+		if (usuario != null && user != null) {
 			usuarioService.editar(usuario);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
 		}
@@ -78,6 +81,20 @@ public class UsuarioResource {
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.NOT_FOUND);
+	}
+	
+	@CrossOrigin
+	@PostMapping("/findemailsenha")
+	public ResponseEntity<Usuario> findEmailSenha(@RequestBody Usuario usuario) {
+		Usuario user = usuarioService.buscarPorEmailESenha(usuario.getEmail(), usuario.getSenha());
+		
+		if(user != null) {
+			return new ResponseEntity<Usuario>(user, HttpStatus.OK);
+		}
+			
+		
+		return new ResponseEntity<Usuario>(user, HttpStatus.NOT_FOUND);
+		
 	}
 
 }
