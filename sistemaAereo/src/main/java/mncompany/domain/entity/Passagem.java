@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Passagem")
@@ -14,14 +18,17 @@ public class Passagem implements Serializable{
 	private Long id;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="id_usuario")
 	private Usuario idUsuario;
 	
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name="id_assento")
 	private Assento idAssento;
 	
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name="id_pagamento")
 	private SituacaoPagamento idPagamento;
 

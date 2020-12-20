@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
@@ -24,6 +26,7 @@ public class Usuario implements Serializable {
 	private String senha;
 
 	@OneToMany(mappedBy = "idUsuario")
+	@JsonIgnore
 	private List<Passagem> passagens;
 
 	public String getNome() {
