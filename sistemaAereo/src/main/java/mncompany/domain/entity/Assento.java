@@ -8,6 +8,8 @@ import javax.persistence.*;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Assento")
@@ -35,6 +37,7 @@ public class Assento implements Serializable {
 	private Voo idVoo;
 	
 	@OneToOne(mappedBy="idAssento")
+	@JsonIgnore
 	private Passagem passagem;
 
 

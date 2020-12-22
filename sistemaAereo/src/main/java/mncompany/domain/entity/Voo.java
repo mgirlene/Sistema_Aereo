@@ -10,6 +10,8 @@ import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Voo")
@@ -43,8 +45,9 @@ public class Voo implements Serializable {
 
 	@Column(nullable = false, length = 45)
 	private String companhia;
-
+	
 	@OneToMany(mappedBy  = "idVoo")
+	@JsonIgnore
 	private List<Assento> assentos;
 
 	public String getOrigem() {

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "SituacaoPagamento")
@@ -17,6 +19,7 @@ public class SituacaoPagamento implements Serializable {
 	private String status;
 	
 	@OneToOne(mappedBy="idPagamento")
+	@JsonIgnore
 	private Passagem passagem;
 
 	public String getStatus() {
