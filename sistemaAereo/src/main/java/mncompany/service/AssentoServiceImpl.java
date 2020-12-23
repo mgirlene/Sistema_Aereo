@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mncompany.domain.entity.Assento;
-import mncompany.domain.entity.Voo;
 import mncompany.repository.AssentoRepository;
 
 @Service
@@ -50,13 +49,13 @@ public class AssentoServiceImpl implements AssentoService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<Assento> buscarPorAssentos(Voo voo) {
-		return this.repository.findByIdVoo(voo.getId());
+	public List<Assento> buscarPorAssentos(Long id) {
+		return this.repository.findByIdVoo(id);
 	}
 
 	@Override
-	public List<Assento> buscarAssentosDisponiveis(Voo voo) {
-		return this.repository.findByIdVoo(voo.getId()).stream().
+	public List<Assento> buscarAssentosDisponiveis(Long id) {
+		return this.repository.findByIdVoo(id).stream().
 				filter(Assento::isDisponibilidade).collect(Collectors.toList());
 	}
 

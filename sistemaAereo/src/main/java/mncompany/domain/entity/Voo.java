@@ -47,7 +47,7 @@ public class Voo implements Serializable {
 	private String companhia;
 	
 	@OneToMany(mappedBy  = "idVoo")
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Assento> assentos;
 
 	public String getOrigem() {

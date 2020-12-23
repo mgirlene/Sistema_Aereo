@@ -1,6 +1,5 @@
 package mncompany.domain.entity;
 
-
 import java.io.Serializable;
 
 import javax.persistence.*;

@@ -79,5 +79,26 @@ public class AssentoResource {
 
 		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
 	}
+	
+	@CrossOrigin
+	@GetMapping("/findassento/{id}")
+	public ResponseEntity<List<Assento>> findAssento(@PathVariable("id") Long id) {
+		List<Assento> assentos = assentoService.buscarPorAssentos(id);
 
+		if (assentos != null)
+			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
+
+		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.NOT_FOUND);
+	}
+
+	@CrossOrigin
+	@GetMapping("/findassentodisp/{id}")
+	public ResponseEntity<List<Assento>> findAssentoDisp(@PathVariable("id") Long id) {
+		List<Assento> assentos = assentoService.buscarAssentosDisponiveis(id);
+
+		if (assentos != null)
+			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
+
+		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.NOT_FOUND);
+	}
 }

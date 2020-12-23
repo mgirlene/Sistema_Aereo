@@ -92,8 +92,8 @@ public class UsuarioResource {
 			return new ResponseEntity<Usuario>(user, HttpStatus.OK);
 		}
 			
-		
-		return new ResponseEntity<Usuario>(user, HttpStatus.NOT_FOUND);
+		user = null;
+		return new ResponseEntity<Usuario>(user, HttpStatus.OK);
 		
 	}
 
