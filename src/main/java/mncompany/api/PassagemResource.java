@@ -33,7 +33,7 @@ public class PassagemResource {
 			return new ResponseEntity<Passagem>(passagem, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -44,7 +44,7 @@ public class PassagemResource {
 			return new ResponseEntity<Passagem>(passagem, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -56,7 +56,7 @@ public class PassagemResource {
 			return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 		}
 
-		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -66,7 +66,7 @@ public class PassagemResource {
 		if (!passagens.isEmpty())
 			return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 
-		return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -77,7 +77,7 @@ public class PassagemResource {
 		if (passagem != null)
 			return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 
-		return new ResponseEntity<Passagem>(passagem, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
 	
 	@CrossOrigin

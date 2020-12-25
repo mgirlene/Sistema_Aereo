@@ -35,7 +35,7 @@ public class UsuarioResource {
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -47,7 +47,7 @@ public class UsuarioResource {
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -59,7 +59,7 @@ public class UsuarioResource {
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 		}
 
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -69,7 +69,7 @@ public class UsuarioResource {
 		if (!usuarios.isEmpty())
 			return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
 
-		return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -80,7 +80,7 @@ public class UsuarioResource {
 		if (usuario != null)
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
 	@CrossOrigin

@@ -36,7 +36,7 @@ public class VooResource {
 			return new ResponseEntity<Voo>(voo, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Voo>(voo, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -47,7 +47,7 @@ public class VooResource {
 			return new ResponseEntity<Voo>(voo, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Voo>(voo, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -59,7 +59,7 @@ public class VooResource {
 			return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 		}
 
-		return new ResponseEntity<Voo>(voo, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -69,7 +69,7 @@ public class VooResource {
 		if (!voos.isEmpty())
 			return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 
-		return new ResponseEntity<List<Voo>>(voos, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -80,7 +80,7 @@ public class VooResource {
 		if (voo != null)
 			return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 
-		return new ResponseEntity<Voo>(voo, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 	}
 
 	@GetMapping("/findvoo/{origem}/{destino}/{data}")
@@ -95,7 +95,7 @@ public class VooResource {
 		if (!voos.isEmpty())
 			return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 
-		return new ResponseEntity<List<Voo>>(voos, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 	}
 
 }

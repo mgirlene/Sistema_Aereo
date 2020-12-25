@@ -32,7 +32,7 @@ public class AssentoResource {
 			assentoService.salvar(assento);
 			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
-		assento = null;
+		
 		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 
@@ -44,7 +44,7 @@ public class AssentoResource {
 			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
 
-		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -56,7 +56,7 @@ public class AssentoResource {
 			return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 		}
 
-		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -66,7 +66,6 @@ public class AssentoResource {
 		if (!assentos.isEmpty())
 			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
-		assentos = null;
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
 
@@ -78,7 +77,7 @@ public class AssentoResource {
 		if (assento != null)
 			return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 
-		return new ResponseEntity<Assento>(assento, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 	
 	@CrossOrigin
@@ -89,7 +88,7 @@ public class AssentoResource {
 		if (assentos != null)
 			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
-		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -100,6 +99,6 @@ public class AssentoResource {
 		if (assentos != null)
 			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
-		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
 }

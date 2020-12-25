@@ -33,7 +33,7 @@ public class SituacaoPagResource {
 			return new ResponseEntity<SituacaoPagamento>(situacaoPagamento, HttpStatus.CREATED);
 		}
 		
-		return new ResponseEntity<SituacaoPagamento>(situacaoPagamento, HttpStatus.CONFLICT);
+		return new ResponseEntity<SituacaoPagamento>(situacaoPagamento, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -44,7 +44,7 @@ public class SituacaoPagResource {
 			return new ResponseEntity<SituacaoPagamento>(situacaoPagamento, HttpStatus.CREATED);
 		}
 		
-		return new ResponseEntity<SituacaoPagamento>(situacaoPagamento, HttpStatus.CONFLICT);
+		return new ResponseEntity<SituacaoPagamento>(situacaoPagamento, HttpStatus.OK);
 	}
 	
 	@CrossOrigin
@@ -56,7 +56,7 @@ public class SituacaoPagResource {
 			return new ResponseEntity<SituacaoPagamento>(sit, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<SituacaoPagamento>(sit, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<SituacaoPagamento>(sit, HttpStatus.OK);
 	}
 	
 	@CrossOrigin
@@ -67,7 +67,7 @@ public class SituacaoPagResource {
 			return new ResponseEntity<List<SituacaoPagamento>>(sit, HttpStatus.OK);
 			//return ResponseEntity.ok(sit);
 		
-		return new ResponseEntity<List<SituacaoPagamento>>(sit, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<SituacaoPagamento>>(sit, HttpStatus.OK);
 		//return ResponseEntity.notFound().build();
 	}
 	
@@ -79,7 +79,7 @@ public class SituacaoPagResource {
 		if(sit != null)
 			return new ResponseEntity<SituacaoPagamento>(sit, HttpStatus.OK);
 		
-		return new ResponseEntity<SituacaoPagamento>(sit, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<SituacaoPagamento>(sit, HttpStatus.OK);
 	}
 	
 }
