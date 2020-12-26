@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mncompany.domain.entity.Passagem;
+import mncompany.domain.entity.Usuario;
 import mncompany.repository.PassagemRepository;
 
 @Service
@@ -46,13 +47,8 @@ public class PassagemServiceImpl implements PassagemService {
 	}
 
 	@Override @Transactional(readOnly = true)
-	public List<Passagem> buscarPorUsuario(Long id) {
-		return this.repository.findByIdUsuario(id);
-	}
-
-	@Override
-	public List<Passagem> buscaPorJoin(Long id) {
-		return repository.findByJoin(id);
+	public List<Passagem> buscarPorUsuario(Usuario user) {
+		return this.repository.findByIdUsuario(user);
 	}
 
 }

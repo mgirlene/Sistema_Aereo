@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import mncompany.domain.entity.Passagem;
+import mncompany.domain.entity.Usuario;
 import mncompany.service.PassagemService;
+import mncompany.service.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/api/passagem")
@@ -24,6 +26,9 @@ public class PassagemResource {
 
 	@Autowired
 	private PassagemService passagemService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@CrossOrigin
 	@PostMapping("/save")
@@ -78,7 +83,14 @@ public class PassagemResource {
 	@CrossOrigin
 	@GetMapping("/finduser/{id}")
 	public ResponseEntity<List<Passagem>> findUser(@PathVariable("id") Long id) {
-		List<Passagem> passagens = passagemService.buscarPorUsuario(id);
+		
+		Usuario user = usuarioService.buscarPorId(id);
+		
+		List<Passagem> passagens = null;
+		
+		if(user != null) {
+			passagens = passagemService.buscarPorUsuario(user);
+		}
 
 		return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 	}

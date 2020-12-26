@@ -3,6 +3,7 @@ package mncompany.service;
 import java.util.List;
 
 import mncompany.domain.entity.Passagem;
+import mncompany.domain.entity.Usuario;
 
 public interface PassagemService {
 	
@@ -16,7 +17,6 @@ public interface PassagemService {
 
 	List<Passagem> buscarTodos();
 	
-	List<Passagem> buscarPorUsuario(Long id);
+	List<Passagem> buscarPorUsuario(Usuario user);
 
-	List<Passagem> buscaPorJoin(Long id);
 }
