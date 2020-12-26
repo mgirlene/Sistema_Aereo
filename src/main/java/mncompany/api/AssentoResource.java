@@ -32,7 +32,7 @@ public class AssentoResource {
 			assentoService.salvar(assento);
 			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
-		
+
 		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 
@@ -63,8 +63,6 @@ public class AssentoResource {
 	@GetMapping("/findall")
 	public ResponseEntity<List<Assento>> findAll() {
 		List<Assento> assentos = assentoService.buscarTodos();
-		if (!assentos.isEmpty())
-			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
@@ -74,19 +72,13 @@ public class AssentoResource {
 	public ResponseEntity<Assento> findId(@PathVariable("id") Long id) {
 		Assento assento = assentoService.buscarPorId(id);
 
-		if (assento != null)
-			return new ResponseEntity<Assento>(assento, HttpStatus.OK);
-
 		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findassento/{id}")
 	public ResponseEntity<List<Assento>> findAssento(@PathVariable("id") Long id) {
 		List<Assento> assentos = assentoService.buscarPorAssentos(id);
-
-		if (assentos != null)
-			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
@@ -95,9 +87,6 @@ public class AssentoResource {
 	@GetMapping("/findassentodisp/{id}")
 	public ResponseEntity<List<Assento>> findAssentoDisp(@PathVariable("id") Long id) {
 		List<Assento> assentos = assentoService.buscarAssentosDisponiveis(id);
-
-		if (assentos != null)
-			return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}

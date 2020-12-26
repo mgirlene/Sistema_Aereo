@@ -29,7 +29,7 @@ public class UsuarioResource {
 	@PostMapping("/save")
 	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario) {
 		Usuario user = usuarioService.buscarPorEmail(usuario.getEmail());
-		
+
 		if (usuario != null && user == null) {
 			usuarioService.salvar(usuario);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
@@ -66,8 +66,6 @@ public class UsuarioResource {
 	@GetMapping("/findall")
 	public ResponseEntity<List<Usuario>> findAll() {
 		List<Usuario> usuarios = usuarioService.buscarTodos();
-		if (!usuarios.isEmpty())
-			return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
 
 		return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
 	}
@@ -77,24 +75,16 @@ public class UsuarioResource {
 	public ResponseEntity<Usuario> findId(@PathVariable("id") Long id) {
 		Usuario usuario = usuarioService.buscarPorId(id);
 
-		if (usuario != null)
-			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
-
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
 	@PostMapping("/findemailsenha")
 	public ResponseEntity<Usuario> findEmailSenha(@RequestBody Usuario usuario) {
 		Usuario user = usuarioService.buscarPorEmailESenha(usuario.getEmail(), usuario.getSenha());
-		
-		if(user != null) {
-			return new ResponseEntity<Usuario>(user, HttpStatus.OK);
-		}
-			
-		user = null;
+
 		return new ResponseEntity<Usuario>(user, HttpStatus.OK);
-		
+
 	}
 
 }

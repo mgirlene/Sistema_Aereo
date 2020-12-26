@@ -22,5 +22,4 @@ public interface UsuarioService {
 
 	Usuario getEmail(String email);
 
-	boolean verificarSenha(String senha, Usuario usuario);
 }

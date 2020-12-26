@@ -66,8 +66,6 @@ public class VooResource {
 	@GetMapping("/findall")
 	public ResponseEntity<List<Voo>> findAll() {
 		List<Voo> voos = vooService.buscarTodos();
-		if (!voos.isEmpty())
-			return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 
 		return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 	}
@@ -76,9 +74,6 @@ public class VooResource {
 	@GetMapping("/findid/{id}")
 	public ResponseEntity<Voo> findId(@PathVariable("id") Long id) {
 		Voo voo = vooService.buscarPorId(id);
-
-		if (voo != null)
-			return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 
 		return new ResponseEntity<Voo>(voo, HttpStatus.OK);
 	}
@@ -91,9 +86,6 @@ public class VooResource {
 		LocalDate date = LocalDate.parse(data, formatter);
 
 		List<Voo> voos = vooService.buscarPorVoos(origem, destino, date);
-
-		if (!voos.isEmpty())
-			return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 
 		return new ResponseEntity<List<Voo>>(voos, HttpStatus.OK);
 	}

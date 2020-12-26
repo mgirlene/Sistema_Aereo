@@ -3,7 +3,6 @@ package mncompany.service;
 import java.util.List;
 
 import mncompany.domain.entity.Passagem;
-import mncompany.domain.entity.Usuario;
 
 public interface PassagemService {
 	

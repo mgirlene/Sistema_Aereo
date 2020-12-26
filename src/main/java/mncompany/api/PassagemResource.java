@@ -63,8 +63,6 @@ public class PassagemResource {
 	@GetMapping("/findall")
 	public ResponseEntity<List<Passagem>> findAll() {
 		List<Passagem> passagens = passagemService.buscarTodos();
-		if (!passagens.isEmpty())
-			return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 
 		return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 	}
@@ -74,20 +72,14 @@ public class PassagemResource {
 	public ResponseEntity<Passagem> findId(@PathVariable("id") Long id) {
 		Passagem passagem = passagemService.buscarPorId(id);
 
-		if (passagem != null)
-			return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
-
 		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/finduser/{id}")
 	public ResponseEntity<List<Passagem>> findUser(@PathVariable("id") Long id) {
 		List<Passagem> passagens = passagemService.buscarPorUsuario(id);
-		
-		if(passagens != null)
-			return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
-		
+
 		return new ResponseEntity<List<Passagem>>(passagens, HttpStatus.OK);
 	}
 

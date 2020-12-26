@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import mncompany.domain.entity.Usuario;
 import mncompany.repository.UsuarioRepository;
@@ -14,16 +13,14 @@ import mncompany.repository.UsuarioRepository;
 @Transactional(readOnly = false)
 
 public class UsuarioServiceImpl implements UsuarioService {
-	
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
+	@Autowired
 	private UsuarioRepository repository;
-	
+
 	public UsuarioServiceImpl(UsuarioRepository repository) {
 		this.repository = repository;
 	}
+
 	@Override
 	public void salvar(Usuario usuario) {
 		this.repository.save(usuario);
@@ -43,8 +40,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	@Transactional(readOnly = true)
 	public Usuario buscarPorId(Long id) {
-		return this.repository.findById(id).orElseThrow(
-		        () -> new RuntimeException("O ID informado [%s] nÃ£o existe no banco."));
+		return this.repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("O ID informado [%s] nÃ£o existe no banco."));
 	}
 
 	@Override
@@ -53,7 +50,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return this.repository.findAll();
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public Usuario buscarPorEmailESenha(String email, String senha) {
 		return this.repository.findByEmailAndSenha(email, senha);
 	}
@@ -62,13 +60,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Usuario buscarPorEmail(String email) {
 		return this.repository.findByEmail(email);
 	}
-	
+
 	public Usuario getEmail(String email) {
 		return repository.findByEmail(email);
-	}
-	
-	public boolean verificarSenha(String senha, Usuario usuario) {
-		return passwordEncoder.matches(senha, usuario.getSenha());
 	}
 
 }
