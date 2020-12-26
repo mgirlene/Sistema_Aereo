@@ -4,32 +4,25 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Passagem")
-public class Passagem implements Serializable{
-	
+public class Passagem implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario idUsuario;
-	
+
 	@OneToOne
-	@JsonIgnore
-	@JoinColumn(name="id_assento")
+	@JoinColumn(name = "id_assento")
 	private Assento idAssento;
-	
+
 	@OneToOne
-	@JsonIgnore
-	@JoinColumn(name="id_pagamento")
+	@JoinColumn(name = "id_pagamento")
 	private SituacaoPagamento idPagamento;
 
 	public Long getId() {
@@ -60,5 +53,4 @@ public class Passagem implements Serializable{
 		this.idPagamento = idPagamento;
 	}
 
-	
 }
