@@ -26,7 +26,7 @@ public class Usuario implements Serializable {
 	private String senha;
 
 	@OneToMany(mappedBy = "idUsuario")
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Passagem> passagens;
 
 	public String getNome() {
