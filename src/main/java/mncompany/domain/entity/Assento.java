@@ -7,8 +7,6 @@ import javax.persistence.*;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Assento")

@@ -71,7 +71,7 @@ public class PassagemResource {
 	@GetMapping("/findid/{id}")
 	public ResponseEntity<Passagem> findId(@PathVariable("id") Long id) {
 		Passagem passagem = passagemService.buscarPorId(id);
-
+		
 		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
 

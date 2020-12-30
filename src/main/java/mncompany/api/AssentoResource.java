@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import mncompany.domain.entity.Assento;
+import mncompany.domain.entity.Voo;
 import mncompany.service.AssentoService;
+import mncompany.service.VooService;
 
 @RestController
 @RequestMapping(value = "/api/assento")
@@ -25,6 +27,9 @@ public class AssentoResource {
 	@Autowired
 	private AssentoService assentoService;
 
+	@Autowired
+	private VooService vooService;
+	
 	@CrossOrigin
 	@PostMapping("/save")
 	public ResponseEntity<Assento> saveAssento(@RequestBody Assento assento) {
@@ -78,7 +83,8 @@ public class AssentoResource {
 	@CrossOrigin
 	@GetMapping("/findassento/{id}")
 	public ResponseEntity<List<Assento>> findAssento(@PathVariable("id") Long id) {
-		List<Assento> assentos = assentoService.buscarPorAssentos(id);
+		Voo voo = vooService.buscarPorId(id);
+		List<Assento> assentos = assentoService.buscarPorAssentos(voo);
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
@@ -86,7 +92,8 @@ public class AssentoResource {
 	@CrossOrigin
 	@GetMapping("/findassentodisp/{id}")
 	public ResponseEntity<List<Assento>> findAssentoDisp(@PathVariable("id") Long id) {
-		List<Assento> assentos = assentoService.buscarAssentosDisponiveis(id);
+		Voo voo = vooService.buscarPorId(id);
+		List<Assento> assentos = assentoService.buscarAssentosDisponiveis(voo);
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
