@@ -97,4 +97,13 @@ public class AssentoResource {
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
+	
+	@CrossOrigin
+	@GetMapping("/findassentodispclasse/{id}/{classe}")
+	public ResponseEntity<List<Assento>> findAssentoDispClasse(@PathVariable("id") Long id, @PathVariable("classe") String classe) {
+		Voo voo = vooService.buscarPorId(id);
+		List<Assento> assentos = assentoService.buscarAssentosDisponiveisClasse(voo, classe);
+
+		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
+	}
 }

@@ -20,4 +20,6 @@ public interface AssentoService {
 	List<Assento> buscarPorAssentos(Voo voo);
 	
 	List<Assento> buscarAssentosDisponiveis(Voo voo);
+	
+	List<Assento> buscarAssentosDisponiveisClasse(Voo voo, String classe);
 }

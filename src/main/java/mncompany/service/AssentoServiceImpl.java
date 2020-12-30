@@ -62,5 +62,13 @@ public class AssentoServiceImpl implements AssentoService {
 		return this.repository.findByVoo(voo).stream().
 				filter(Assento::isDisponibilidade).collect(Collectors.toList());
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Assento> buscarAssentosDisponiveisClasse(Voo voo, String classe) {
+		List<Assento> assentos = this.repository.findByVoo(voo).stream().
+				filter(Assento::isDisponibilidade).collect(Collectors.toList());
+		return assentos.stream().filter(c -> c.getClasse().equals(classe)).collect(Collectors.toList());
+	}
 
 }
