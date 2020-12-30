@@ -10,5 +10,5 @@ import mncompany.domain.entity.Assento;
 @Repository
 public interface AssentoRepository extends JpaRepository<Assento, Long> {
 
-	List<Assento> findByIdVoo(Long id);
+	List<Assento> findByVoo(Long id);
 }

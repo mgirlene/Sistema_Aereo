@@ -3,6 +3,7 @@ package mncompany.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import mncompany.repository.AssentoRepository;
 @Transactional(readOnly = false)
 public class AssentoServiceImpl implements AssentoService {
 	
+	@Autowired
 	private AssentoRepository repository;
 	
 	public AssentoServiceImpl(AssentoRepository repository) {
@@ -50,12 +52,12 @@ public class AssentoServiceImpl implements AssentoService {
 	
 	@Transactional(readOnly = true)
 	public List<Assento> buscarPorAssentos(Long id) {
-		return this.repository.findByIdVoo(id);
+		return this.repository.findByVoo(id);
 	}
 
 	@Override
 	public List<Assento> buscarAssentosDisponiveis(Long id) {
-		return this.repository.findByIdVoo(id).stream().
+		return this.repository.findByVoo(id).stream().
 				filter(Assento::isDisponibilidade).collect(Collectors.toList());
 	}
 

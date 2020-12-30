@@ -3,6 +3,7 @@ package mncompany.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import mncompany.repository.VooRepository;
 @Transactional(readOnly = false)
 public class VooServiceImpl implements VooService {
 	
+	@Autowired
 	private VooRepository repository;
 	
 	public VooServiceImpl(VooRepository repository) {

@@ -15,13 +15,13 @@ public class Passagem implements Serializable {
 
 	private String usuario;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_assento")
-	private Assento idAssento;
+	private Assento assento;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_pagamento")
-	private SituacaoPagamento idPagamento;
+	private SituacaoPagamento pagamento;
 
 	public Long getId() {
 		return id;
@@ -35,20 +35,20 @@ public class Passagem implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public Assento getIdAssento() {
-		return idAssento;
+	public Assento getAssento() {
+		return assento;
 	}
 
-	public void setIdAssento(Assento idAssento) {
-		this.idAssento = idAssento;
+	public void setAssento(Assento assento) {
+		this.assento = assento;
 	}
 
-	public SituacaoPagamento getIdPagamento() {
-		return idPagamento;
+	public SituacaoPagamento getPagamento() {
+		return pagamento;
 	}
 
-	public void setIdPagamento(SituacaoPagamento idPagamento) {
-		this.idPagamento = idPagamento;
+	public void setPagamento(SituacaoPagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 
 }

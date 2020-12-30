@@ -2,6 +2,7 @@ package mncompany.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import mncompany.repository.SituacaoPagamentoRepository;
 @Transactional(readOnly = false)
 public class SituacaoPagamentoServiceImpl implements SituacaoPagamentoService {
 
+	@Autowired
 	private SituacaoPagamentoRepository repository;
 
 	public SituacaoPagamentoServiceImpl(SituacaoPagamentoRepository repository) {

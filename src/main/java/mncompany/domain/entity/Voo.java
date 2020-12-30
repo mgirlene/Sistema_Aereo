@@ -46,7 +46,7 @@ public class Voo implements Serializable {
 	@Column(nullable = false, length = 45)
 	private String companhia;
 	
-	@OneToMany(mappedBy  = "idVoo")
+	@OneToMany(mappedBy  = "voo")
 	@JsonIgnore
 	private List<Assento> assentos;
 

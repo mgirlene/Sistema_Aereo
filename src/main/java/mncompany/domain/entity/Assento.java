@@ -33,12 +33,7 @@ public class Assento implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_voo")
-	private Voo idVoo;
-	
-	@OneToOne(mappedBy="idAssento")
-	@JsonIgnore
-	private Passagem passagem;
-
+	private Voo voo;
 
 	public String getNome() {
 		return nome;
@@ -56,12 +51,12 @@ public class Assento implements Serializable {
 		this.disponibilidade = disponibilidade;
 	}
 
-	public Voo getIdVoo() {
-		return idVoo;
+	public Voo getVoo() {
+		return voo;
 	}
 
 	public void setIdVoo(Voo id_voo) {
-		this.idVoo = id_voo;
+		this.voo = id_voo;
 	}
 
 	public String getClasse() {
