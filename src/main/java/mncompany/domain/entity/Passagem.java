@@ -13,9 +13,7 @@ public class Passagem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_usuario")
-	private Usuario idUsuario;
+	private String usuario;
 
 	@OneToOne
 	@JoinColumn(name = "id_assento")
@@ -29,12 +27,12 @@ public class Passagem implements Serializable {
 		return id;
 	}
 
-	public Usuario getIdUsuario() {
-		return idUsuario;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public Assento getIdAssento() {

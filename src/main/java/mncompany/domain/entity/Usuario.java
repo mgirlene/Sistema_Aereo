@@ -1,11 +1,8 @@
 package mncompany.domain.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("serial")
 @Entity
@@ -24,10 +21,6 @@ public class Usuario implements Serializable {
 
 	@Column(nullable = false, length = 255)
 	private String senha;
-
-	@OneToMany(mappedBy = "idUsuario")
-	//@JsonIgnore
-	private List<Passagem> passagens;
 
 	public String getNome() {
 		return nome;
@@ -57,11 +50,4 @@ public class Usuario implements Serializable {
 		return id;
 	}
 
-	public List<Passagem> getPassagens() {
-		return passagens;
-	}
-
-	public void setPassagens(List<Passagem> passagens) {
-		this.passagens = passagens;
-	}
 }

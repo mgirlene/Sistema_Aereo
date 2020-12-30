@@ -19,7 +19,7 @@ public class SituacaoPagamento implements Serializable {
 	private String status;
 	
 	@OneToOne(mappedBy="idPagamento")
-	//@JsonIgnore
+	@JsonIgnore
 	private Passagem passagem;
 
 	public String getStatus() {

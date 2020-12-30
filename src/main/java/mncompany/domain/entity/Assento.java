@@ -36,7 +36,7 @@ public class Assento implements Serializable {
 	private Voo idVoo;
 	
 	@OneToOne(mappedBy="idAssento")
-	//@JsonIgnore
+	@JsonIgnore
 	private Passagem passagem;
 
 
