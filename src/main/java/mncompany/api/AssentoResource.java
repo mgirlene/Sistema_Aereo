@@ -45,6 +45,8 @@ public class AssentoResource {
 	@PutMapping("/update")
 	public ResponseEntity<Assento> updateAssento(@RequestBody Assento assento) {
 		if (assento != null) {
+			//Voo voo = vooService.buscarPorId(assento.getVoo().getId());
+			//assento.setIdVoo(voo);
 			assentoService.editar(assento);
 			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
@@ -76,7 +78,8 @@ public class AssentoResource {
 	@GetMapping("/findid/{id}")
 	public ResponseEntity<Assento> findId(@PathVariable("id") Long id) {
 		Assento assento = assentoService.buscarPorId(id);
-
+		//Voo voo = vooService.buscarPorId(assento.getVoo().getId());
+		//assento.setIdVoo(voo);
 		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 
