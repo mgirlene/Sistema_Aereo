@@ -15,12 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mncompany.domain.entity.Assento;
 import mncompany.domain.entity.Passagem;
-import mncompany.domain.entity.SituacaoPagamento;
-import mncompany.service.AssentoService;
 import mncompany.service.PassagemService;
-import mncompany.service.SituacaoPagamentoService;
 
 @RestController
 @RequestMapping(value = "/api/passagem")
@@ -28,21 +24,11 @@ public class PassagemResource {
 
 	@Autowired
 	private PassagemService passagemService;
-	
-	@Autowired
-	private AssentoService assentoService;
-	
-	@Autowired
-	private SituacaoPagamentoService pagamentoService;
 
 	@CrossOrigin
 	@PostMapping("/save")
 	public ResponseEntity<Passagem> savePassagem(@RequestBody Passagem passagem) {
 		if (passagem != null) {
-			/*Assento assento = assentoService.buscarPorId(passagem.getAssento().getId());
-			passagem.setAssento(assento);
-			SituacaoPagamento pagamento = pagamentoService.buscarPorId(passagem.getAssento().getId());
-			passagem.setPagamento(pagamento);*/
 			passagemService.salvar(passagem);
 			return new ResponseEntity<Passagem>(passagem, HttpStatus.CREATED);
 		}
@@ -85,7 +71,7 @@ public class PassagemResource {
 	@GetMapping("/findid/{id}")
 	public ResponseEntity<Passagem> findId(@PathVariable("id") Long id) {
 		Passagem passagem = passagemService.buscarPorId(id);
-		
+
 		return new ResponseEntity<Passagem>(passagem, HttpStatus.OK);
 	}
 
