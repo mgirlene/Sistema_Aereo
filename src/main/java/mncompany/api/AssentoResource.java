@@ -29,7 +29,7 @@ public class AssentoResource {
 
 	@Autowired
 	private VooService vooService;
-	
+
 	@CrossOrigin
 	@PostMapping("/save")
 	public ResponseEntity<Assento> saveAssento(@RequestBody Assento assento) {
@@ -45,8 +45,6 @@ public class AssentoResource {
 	@PutMapping("/update")
 	public ResponseEntity<Assento> updateAssento(@RequestBody Assento assento) {
 		if (assento != null) {
-			//Voo voo = vooService.buscarPorId(assento.getVoo().getId());
-			//assento.setIdVoo(voo);
 			assentoService.editar(assento);
 			return new ResponseEntity<Assento>(assento, HttpStatus.CREATED);
 		}
@@ -78,8 +76,6 @@ public class AssentoResource {
 	@GetMapping("/findid/{id}")
 	public ResponseEntity<Assento> findId(@PathVariable("id") Long id) {
 		Assento assento = assentoService.buscarPorId(id);
-		//Voo voo = vooService.buscarPorId(assento.getVoo().getId());
-		//assento.setIdVoo(voo);
 		return new ResponseEntity<Assento>(assento, HttpStatus.OK);
 	}
 
@@ -100,10 +96,11 @@ public class AssentoResource {
 
 		return new ResponseEntity<List<Assento>>(assentos, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("/findassentodispclasse/{id}/{classe}")
-	public ResponseEntity<List<Assento>> findAssentoDispClasse(@PathVariable("id") Long id, @PathVariable("classe") String classe) {
+	public ResponseEntity<List<Assento>> findAssentoDispClasse(@PathVariable("id") Long id,
+			@PathVariable("classe") String classe) {
 		Voo voo = vooService.buscarPorId(id);
 		List<Assento> assentos = assentoService.buscarAssentosDisponiveisClasse(voo, classe);
 

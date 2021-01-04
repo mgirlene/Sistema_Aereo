@@ -13,10 +13,10 @@ import mncompany.repository.VooRepository;
 @Service
 @Transactional(readOnly = false)
 public class VooServiceImpl implements VooService {
-	
+
 	@Autowired
 	private VooRepository repository;
-	
+
 	public VooServiceImpl(VooRepository repository) {
 		this.repository = repository;
 	}
@@ -37,21 +37,23 @@ public class VooServiceImpl implements VooService {
 		this.repository.delete(voo);
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public Voo buscarPorId(Long id) {
-		return this.repository.findById(id).orElseThrow(
-		        () -> new RuntimeException("O ID do assento informado [%s] nÃ£o existe no banco."));
+		return this.repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("O ID do assento informado [%s] nÃ£o existe no banco."));
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public List<Voo> buscarTodos() {
 		return this.repository.findAll();
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataSaida) {
 		return this.repository.findByOrigemAndDestinoAndDataSaida(origem, destino, dataSaida);
 	}
-	
 
 }

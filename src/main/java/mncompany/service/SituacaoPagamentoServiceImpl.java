@@ -39,8 +39,8 @@ public class SituacaoPagamentoServiceImpl implements SituacaoPagamentoService {
 	@Override
 	@Transactional(readOnly = true)
 	public SituacaoPagamento buscarPorId(Long id) {
-		return this.repository.findById(id).orElseThrow(() -> 
-			new RuntimeException("O ID informado [%s] não existe no banco."));
+		return this.repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("O ID informado [%s] não existe no banco."));
 	}
 
 	@Override

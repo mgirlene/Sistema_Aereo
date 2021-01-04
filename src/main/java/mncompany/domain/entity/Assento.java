@@ -11,20 +11,20 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @Entity
 @Table(name = "Assento")
 public class Assento implements Serializable {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(nullable = false, length = 45)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private boolean disponibilidade;
-	
-	@Column( nullable = false)
+
+	@Column(nullable = false)
 	private String classe;
-	
+
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(nullable = false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private float preco;
@@ -64,7 +64,7 @@ public class Assento implements Serializable {
 	public void setClasse(String classe) {
 		this.classe = classe;
 	}
-	
+
 	public float getPreco() {
 		return preco;
 	}
@@ -77,5 +77,4 @@ public class Assento implements Serializable {
 		return id;
 	}
 
-	
 }

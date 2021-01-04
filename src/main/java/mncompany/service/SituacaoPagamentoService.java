@@ -5,7 +5,7 @@ import java.util.List;
 import mncompany.domain.entity.SituacaoPagamento;
 
 public interface SituacaoPagamentoService {
-	
+
 	void salvar(SituacaoPagamento situacaoPagamento);
 
 	void editar(SituacaoPagamento situacaoPagamento);

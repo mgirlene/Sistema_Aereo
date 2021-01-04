@@ -14,10 +14,10 @@ import mncompany.repository.AssentoRepository;
 @Service
 @Transactional(readOnly = false)
 public class AssentoServiceImpl implements AssentoService {
-	
+
 	@Autowired
 	private AssentoRepository repository;
-	
+
 	public AssentoServiceImpl(AssentoRepository repository) {
 		this.repository = repository;
 	}
@@ -41,8 +41,8 @@ public class AssentoServiceImpl implements AssentoService {
 	@Override
 	@Transactional(readOnly = true)
 	public Assento buscarPorId(Long id) {
-		return this.repository.findById(id).orElseThrow(
-			() -> new RuntimeException("O ID do assento informado [%s] não existe no banco."));
+		return this.repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("O ID do assento informado [%s] não existe no banco."));
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class AssentoServiceImpl implements AssentoService {
 	public List<Assento> buscarTodos() {
 		return this.repository.findAll();
 	}
-	
+
 	@Transactional(readOnly = true)
 	public List<Assento> buscarPorAssentos(Voo voo) {
 		return this.repository.findByVoo(voo);
@@ -59,15 +59,14 @@ public class AssentoServiceImpl implements AssentoService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Assento> buscarAssentosDisponiveis(Voo voo) {
-		return this.repository.findByVoo(voo).stream().
-				filter(Assento::isDisponibilidade).collect(Collectors.toList());
+		return this.repository.findByVoo(voo).stream().filter(Assento::isDisponibilidade).collect(Collectors.toList());
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Assento> buscarAssentosDisponiveisClasse(Voo voo, String classe) {
-		List<Assento> assentos = this.repository.findByVoo(voo).stream().
-				filter(Assento::isDisponibilidade).collect(Collectors.toList());
+		List<Assento> assentos = this.repository.findByVoo(voo).stream().filter(Assento::isDisponibilidade)
+				.collect(Collectors.toList());
 		return assentos.stream().filter(c -> c.getClasse().equals(classe)).collect(Collectors.toList());
 	}
 

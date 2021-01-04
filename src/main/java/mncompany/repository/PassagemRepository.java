@@ -9,6 +9,7 @@ import mncompany.domain.entity.Passagem;
 
 @Repository
 public interface PassagemRepository extends JpaRepository<Passagem, Long> {
+	
 	List<Passagem> findByUsuario(String usuario);
 
 }

@@ -16,10 +16,10 @@ public interface AssentoService {
 	Assento buscarPorId(Long id);
 
 	List<Assento> buscarTodos();
-	
+
 	List<Assento> buscarPorAssentos(Voo voo);
-	
+
 	List<Assento> buscarAssentosDisponiveis(Voo voo);
-	
+
 	List<Assento> buscarAssentosDisponiveisClasse(Voo voo, String classe);
 }

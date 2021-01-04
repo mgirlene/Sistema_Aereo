@@ -6,7 +6,7 @@ import java.util.List;
 import mncompany.domain.entity.Voo;
 
 public interface VooService {
-	
+
 	void salvar(Voo voo);
 
 	void editar(Voo voo);
@@ -16,6 +16,6 @@ public interface VooService {
 	Voo buscarPorId(Long id);
 
 	List<Voo> buscarTodos();
-	
+
 	List<Voo> buscarPorVoos(String origem, String destino, LocalDate dataSaida);
 }
